@@ -1,0 +1,191 @@
+{
+  "featured": {
+    "label": "Featured Symmetric Vision videos",
+    "items": [
+      {
+        "platform": "youtube",
+        "videoId": "YVHQzyfnFJA",
+        "title": "Psychedelic Replication Compilation 2024",
+        "description": "A recent compilation of altered-perception visual experiments.",
+        "warning": "Flashing visuals"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "pL67_rWrXjg",
+        "title": "Just riding my bike around Basel on a bit of acid",
+        "description": "Bicycle Day visual memory."
+      },
+      {
+        "platform": "youtube",
+        "videoId": "ubs6gwqr8m4",
+        "title": "Having a little chat with this hyperspace entity",
+        "description": "Entity-communication visual experiment."
+      },
+      {
+        "platform": "youtube",
+        "videoId": "FASDsK4T144",
+        "title": "Memory from Dead Mans Trip v14",
+        "description": "DMT trip replication experiment.",
+        "warning": "Epilepsy warning"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "jJ080_MXh0U",
+        "title": "Shooting photons at Shankra Festival 2023",
+        "description": "Festival projection and stage visuals."
+      },
+      {
+        "platform": "youtube",
+        "videoId": "vHluVgSyNK8",
+        "title": "Differences in hallucinations across altered states",
+        "description": "A visual comparison of subjective perceptual states.",
+        "warning": "Flashing visuals"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "DCe9XVmVUJc",
+        "title": "Establishing Entity Communication at MoDem Festival 2023",
+        "description": "Live festival visual system."
+      },
+      {
+        "platform": "youtube",
+        "videoId": "FyBpg-wY_Zo",
+        "title": "Tripping at nearby forest",
+        "description": "3DVR experiment."
+      },
+      {
+        "platform": "youtube",
+        "videoId": "ShnX5sy4NQY",
+        "title": "DJ Full Lotus at Parvati Funday Stream",
+        "description": "Visuals for a livestream performance."
+      },
+      {
+        "platform": "youtube",
+        "videoId": "WRHCVUyAbJ8",
+        "title": "Psychedelic Replication compilation 2020",
+        "description": "Earlier compilation from the replication archive.",
+        "warning": "Flashing visuals"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "ph4szaVTWSY",
+        "title": "Memory from Dead Mans Trip v7",
+        "description": "DMT visuals experiment.",
+        "warning": "Seizure warning"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "NL8G1WcHazE",
+        "title": "360 degree Psychedelic Visuals experiment v6",
+        "description": "Immersive 360 visual experiment.",
+        "warning": "Flashing visuals"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "hg2rwsvuwPE",
+        "title": "Walk around the forest",
+        "description": "Psychedelic replication study."
+      },
+      {
+        "platform": "youtube",
+        "videoId": "oWADqXUrEfk",
+        "title": "Classroom Sensory Overload",
+        "description": "Sensory overload visual experiment.",
+        "warning": "Seizure warning"
+      }
+    ]
+  },
+  "performances": {
+    "label": "Projection mapping performances",
+    "items": [
+      {
+        "platform": "youtube",
+        "videoId": "661MoIys-W8",
+        "title": "Unexpected performance at MoDem Festival 2025",
+        "description": "Projection mapping and live visuals."
+      },
+      {
+        "platform": "youtube",
+        "videoId": "2zP-oE3xWh0",
+        "title": "Bending pixels and brains at Terra Festival 2025",
+        "description": "Festival visual performance.",
+        "warning": "Flashing visuals"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "KVWchaDQPZs",
+        "title": "Hive stage at MoDem Festival 2025",
+        "description": "Live stage visuals."
+      },
+      {
+        "platform": "youtube",
+        "videoId": "lLLR49iUq6A",
+        "title": "Quagmire stage at Terra Festival 2025",
+        "description": "Projection work in Skujene, Latvia."
+      },
+      {
+        "platform": "youtube",
+        "videoId": "LCNawCozR54",
+        "title": "Quick memory from Terra Festival 2024",
+        "description": "Projection mapping in Salacgriva, Latvia."
+      },
+      {
+        "platform": "youtube",
+        "videoId": "7B2Q1viG1kE",
+        "title": "Brief memory from MoDem Festival 2023",
+        "description": "Live visual environment."
+      },
+      {
+        "platform": "youtube",
+        "videoId": "oqsnJ9KJ-to",
+        "title": "Psychedelic Cryptography at Shankra Festival",
+        "description": "Festival projection experiment."
+      }
+    ]
+  },
+  "instagram": {
+    "label": "Instagram preview media",
+    "items": [
+      {
+        "platform": "instagram",
+        "platformLabel": "Instagram-ready",
+        "title": "Feed preview slot",
+        "description": "Local approved preview media. Replace this item with Instagram post data once account access is available.",
+        "url": "https://www.instagram.com/inner.reflection/",
+        "thumbnail": "RGBDistortLogo.png",
+        "previewVideo": "SiteBackgroundVideo.mp4",
+        "aspectRatio": "16 / 9"
+      },
+      {
+        "platform": "instagram",
+        "platformLabel": "Instagram",
+        "title": "Follow Inner Reflection",
+        "description": "Open the current Instagram profile until live post data is connected.",
+        "url": "https://www.instagram.com/inner.reflection/",
+        "thumbnail": "Symmetric%20Vision%20logo.png",
+        "aspectRatio": "1 / 1"
+      }
+    ]
+  },
+  "projects": {
+    "label": "Larger projects",
+    "items": [
+      {
+        "platform": "youtube",
+        "videoId": "fHIrMY9o7Eo",
+        "title": "Parvati Records 20th Anniversary",
+        "description": "Cover art and visuals for the Parvati Records anniversary presentation."
+      },
+      {
+        "platform": "external",
+        "platformLabel": "Film",
+        "title": "Troubled Minds (2021)",
+        "description": "VFX elements for the film Troubled Minds.",
+        "url": "https://www.filmstritone.com/troubledminds",
+        "thumbnail": "eyelogo.jpg",
+        "aspectRatio": "16 / 9"
+      }
+    ]
+  }
+}
+
