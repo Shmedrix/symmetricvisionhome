@@ -533,6 +533,32 @@ a:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
+.instagram-link {
+  min-height: 86px;
+  width: min(420px, 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 20px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+}
+
+.instagram-link span {
+  color: var(--text-soft);
+}
+
+.instagram-link strong {
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.instagram-link:hover {
+  border-color: var(--text);
+  background: var(--surface-strong);
+}
+
 .site-footer {
   border-top: 1px solid var(--line);
   padding: 28px var(--gutter) 34px;
@@ -659,6 +685,11 @@ a:hover {
 
   .button-link {
     width: 100%;
+  }
+
+  .instagram-link {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 
