@@ -102,7 +102,7 @@
   function createVideoCard(item, isClone) {
     const card = document.createElement("a");
     card.className = "video-card";
-    card.href = item.url || getDefaultUrl(item);
+    card.href = getSafeHref(item.url || item.permalink, getDefaultUrl(item));
     card.target = "_blank";
     card.rel = "noopener noreferrer";
     card.style.setProperty("--card-ratio", item.aspectRatio || "16 / 9");
@@ -120,7 +120,7 @@
     image.alt = "";
     image.loading = "lazy";
     image.decoding = "async";
-    image.src = item.thumbnail || getDefaultThumbnail(item);
+    image.src = getSafeMediaSrc(item.thumbnail, getDefaultThumbnail(item));
     media.append(image);
 
     const badge = document.createElement("span");
@@ -252,6 +252,11 @@
   }
 
   function wireVideoPreview(card, media, src) {
+    const safeSrc = getSafeMediaSrc(src, "");
+    if (!safeSrc) {
+      return;
+    }
+
     const video = document.createElement("video");
     video.muted = true;
     video.loop = true;
@@ -265,7 +270,7 @@
       }
 
       if (!video.src) {
-        video.src = src;
+        video.src = safeSrc;
       }
       video.play()
         .then(() => card.classList.add("is-previewing"))
@@ -295,6 +300,7 @@
       iframe.loading = "eager";
       iframe.allow = "autoplay; encrypted-media; picture-in-picture";
       iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      iframe.setAttribute("sandbox", "allow-scripts allow-same-origin allow-presentation");
       iframe.src = getYoutubeEmbedUrl(videoId);
 
       playerHost.append(iframe);
@@ -327,6 +333,36 @@
       return `https://i.ytimg.com/vi/${encodeURIComponent(item.videoId)}/hqdefault.jpg`;
     }
     return item.thumbnail || "RGBDistortLogo.png";
+  }
+
+  function getSafeHref(value, fallback) {
+    const safeUrl = getSafeUrl(value);
+    if (safeUrl) {
+      return safeUrl;
+    }
+
+    return getSafeUrl(fallback) || "links.html";
+  }
+
+  function getSafeMediaSrc(value, fallback) {
+    return getSafeUrl(value) || getSafeUrl(fallback) || "";
+  }
+
+  function getSafeUrl(value) {
+    if (!value || typeof value !== "string") {
+      return "";
+    }
+
+    try {
+      const url = new URL(value, window.location.href);
+      if (url.protocol === "http:" || url.protocol === "https:") {
+        return url.href;
+      }
+    } catch (_) {
+      return "";
+    }
+
+    return "";
   }
 
   function getYoutubeEmbedUrl(videoId) {
