@@ -820,6 +820,47 @@ a:hover {
   background: var(--surface-strong);
 }
 
+.support-section--donate {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(260px, 0.48fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.support-section__copy {
+  max-width: 920px;
+}
+
+.support-section__copy h2 {
+  max-width: 760px;
+}
+
+.support-section__copy p {
+  margin: 16px 0 0;
+}
+
+.support-section__actions {
+  display: grid;
+  gap: 12px;
+}
+
+.support-section__actions .button-link {
+  width: 100%;
+}
+
+.support-section__donate {
+  min-height: 58px;
+  border-color: var(--text);
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.support-section__note {
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
 .links-page {
   min-height: calc(100svh - 170px);
   display: grid;
@@ -973,7 +1014,8 @@ a:hover {
   }
 
   .split-section,
-  .contact-grid {
+  .contact-grid,
+  .support-section--donate {
     grid-template-columns: 1fr;
   }
 }
