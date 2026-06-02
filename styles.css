@@ -179,7 +179,13 @@ a:hover {
   text-transform: uppercase;
 }
 
-.hero h1,
+.hero h1 {
+  text-shadow:
+    -0.08em -0.055em 0 rgba(105, 0, 0, 0.56),
+    0.07em 0.06em 0 rgba(0, 72, 88, 0.62),
+    0 2px 18px rgba(0, 0, 0, 0.82);
+}
+
 .hero p {
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.82);
 }
