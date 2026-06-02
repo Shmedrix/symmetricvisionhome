@@ -11,7 +11,7 @@
   --cyan: #77f7ff;
   --magenta: #ff5bd8;
   --green: #89ff9a;
-  --max: 1180px;
+  --max: 1320px;
   --gutter: 24px;
 }
 
@@ -438,7 +438,6 @@ a:hover {
 }
 
 .split-section--story {
-  max-width: 1320px;
   grid-template-columns: minmax(0, 1.28fr) minmax(420px, 0.72fr);
   gap: 48px;
   align-items: stretch;
