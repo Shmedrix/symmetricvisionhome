@@ -54,6 +54,13 @@ a:hover {
   outline-offset: 4px;
 }
 
+.svg-filters {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 .skip-link {
   position: fixed;
   left: 16px;
@@ -175,11 +182,39 @@ a:hover {
 .hero h1 {
   position: relative;
   display: inline-block;
+  isolation: isolate;
   text-shadow:
     -0.05em -0.035em 0 rgba(105, 0, 0, 0.54),
     0.05em 0.04em 0 rgba(0, 72, 88, 0.58),
     0 2px 18px rgba(0, 0, 0, 0.82);
-  animation: hero-title-drift 8.5s ease-in-out infinite alternate;
+  filter: url("#hero-liquid-filter");
+}
+
+.hero h1::before,
+.hero h1::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.58;
+  filter: blur(0.2px);
+  will-change: clip-path, transform, opacity;
+}
+
+.hero h1::before {
+  color: rgba(130, 0, 14, 0.72);
+  clip-path: ellipse(58% 62% at 38% 42%);
+  transform: translate3d(-4px, -2px, 0) skewX(-0.55deg);
+  animation: hero-chroma-red 12s ease-in-out infinite alternate;
+}
+
+.hero h1::after {
+  color: rgba(0, 84, 104, 0.76);
+  clip-path: ellipse(62% 66% at 62% 58%);
+  transform: translate3d(4px, 2px, 0) skewX(0.5deg);
+  animation: hero-chroma-cyan 13.5s ease-in-out infinite alternate;
 }
 
 .hero p {
@@ -1074,29 +1109,60 @@ a:hover {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
+
+  .hero h1 {
+    filter: none;
+  }
 }
 
-@keyframes hero-title-drift {
+@keyframes hero-chroma-red {
   0% {
-    transform: translate3d(-4px, 2px, 0);
-    text-shadow:
-      -0.045em -0.032em 0 rgba(105, 0, 0, 0.5),
-      0.048em 0.038em 0 rgba(0, 72, 88, 0.54),
-      0 2px 18px rgba(0, 0, 0, 0.82);
+    clip-path: ellipse(56% 60% at 34% 40%);
+    transform: translate3d(-3.4px, -1.8px, 0) skewX(-0.35deg);
+    opacity: 0.52;
   }
 
-  45% {
-    text-shadow:
-      -0.062em -0.038em 0 rgba(105, 0, 0, 0.58),
-      0.04em 0.052em 0 rgba(0, 86, 106, 0.6),
-      0 2px 18px rgba(0, 0, 0, 0.82);
+  36% {
+    clip-path: ellipse(68% 72% at 46% 45%);
+    transform: translate3d(-5px, -0.9px, 0) skewX(0.28deg);
+    opacity: 0.72;
+  }
+
+  72% {
+    clip-path: ellipse(52% 58% at 28% 52%);
+    transform: translate3d(-2.6px, -2.7px, 0) skewX(-0.7deg);
+    opacity: 0.62;
   }
 
   100% {
-    transform: translate3d(4px, -2px, 0);
-    text-shadow:
-      -0.04em -0.046em 0 rgba(105, 0, 0, 0.54),
-      0.064em 0.034em 0 rgba(0, 72, 88, 0.62),
-      0 2px 18px rgba(0, 0, 0, 0.82);
+    clip-path: ellipse(62% 66% at 40% 38%);
+    transform: translate3d(-4px, -1.4px, 0) skewX(-0.12deg);
+    opacity: 0.68;
+  }
+}
+
+@keyframes hero-chroma-cyan {
+  0% {
+    clip-path: ellipse(62% 64% at 62% 56%);
+    transform: translate3d(3px, 1.9px, 0) skewX(0.26deg);
+    opacity: 0.56;
+  }
+
+  40% {
+    clip-path: ellipse(72% 74% at 52% 62%);
+    transform: translate3d(5.2px, 1.1px, 0) skewX(-0.36deg);
+    opacity: 0.76;
+  }
+
+  78% {
+    clip-path: ellipse(56% 62% at 70% 48%);
+    transform: translate3d(2.5px, 3px, 0) skewX(0.68deg);
+    opacity: 0.64;
+  }
+
+  100% {
+    clip-path: ellipse(66% 68% at 60% 60%);
+    transform: translate3d(4.1px, 1.6px, 0) skewX(0.08deg);
+    opacity: 0.7;
   }
 }

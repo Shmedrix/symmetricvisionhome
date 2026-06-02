@@ -15,6 +15,22 @@
     <script src="scripts/youtube-visibility.js?v=20260602-shorts-carousel" defer></script>
   </head>
   <body>
+    <svg class="svg-filters" aria-hidden="true" focusable="false">
+      <filter id="hero-liquid-filter" x="-18%" y="-34%" width="136%" height="168%" color-interpolation-filters="sRGB">
+        <feTurbulence type="turbulence" baseFrequency="0.004 0.014" numOctaves="1" seed="13" result="liquidField">
+          <animate attributeName="baseFrequency" values="0.004 0.014;0.007 0.011;0.005 0.017;0.004 0.014" dur="13s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" />
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="liquidField" scale="7.2" xChannelSelector="R" yChannelSelector="G" result="broadRipple">
+          <animate attributeName="scale" values="5.4;8.2;6.5;7.6;5.4" dur="12s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" />
+        </feDisplacementMap>
+        <feTurbulence type="fractalNoise" baseFrequency="0.026 0.038" numOctaves="1" seed="29" result="surfaceRipple">
+          <animate attributeName="baseFrequency" values="0.026 0.038;0.031 0.032;0.023 0.041;0.026 0.038" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" />
+        </feTurbulence>
+        <feDisplacementMap in="broadRipple" in2="surfaceRipple" scale="1.8" xChannelSelector="B" yChannelSelector="R">
+          <animate attributeName="scale" values="1.1;2.1;1.5;1.8;1.1" dur="10s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" />
+        </feDisplacementMap>
+      </filter>
+    </svg>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <a class="site-mark" href="index.html" aria-label="Symmetric Vision home">
@@ -36,7 +52,7 @@
         </video>
         <div class="hero__shade" aria-hidden="true"></div>
         <div class="hero__content">
-          <h1>SYMMETRIC VISION</h1>
+          <h1 data-text="SYMMETRIC VISION">SYMMETRIC VISION</h1>
           <p>Inducing Flashbacks since 2014</p>
           <div class="hero__actions" aria-label="Primary links">
             <a class="button-link" href="#featured-videos">Watch videos</a>
