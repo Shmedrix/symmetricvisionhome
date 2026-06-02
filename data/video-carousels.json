@@ -332,6 +332,7 @@
         "platform": "youtube",
         "platformLabel": "Music video",
         "videoId": "ySpdq-zoBJI",
+        "embedDisabled": true,
         "title": "Enter The Illusion by Noove",
         "description": "Music video visuals for Noove on OSOM Music.",
         "details": [

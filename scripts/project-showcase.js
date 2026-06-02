@@ -106,7 +106,7 @@
   function renderActive(stage, item, index) {
     const media = document.createElement("div");
     media.className = "project-showcase__media";
-    media.dataset.previewSrc = getPreviewEmbedSrc(item);
+    media.dataset.previewSrc = item.embedDisabled ? "" : getPreviewEmbedSrc(item);
     media.dataset.previewTitle = `${item.title} preview`;
     media.append(createMediaLink(item));
 
@@ -174,6 +174,16 @@
       }
     });
     link.append(image);
+
+    if (item.embedDisabled) {
+      link.classList.add("project-showcase__media-link--external");
+
+      const cta = document.createElement("span");
+      cta.className = "project-showcase__external-cta";
+      cta.textContent = "Watch on YouTube";
+      link.append(cta);
+    }
+
     return link;
   }
 
