@@ -9,7 +9,7 @@
     return;
   }
 
-  fetch(DATA_URL)
+  fetch(DATA_URL, { cache: "no-store" })
     .then((response) => {
       if (!response.ok) {
         throw new Error(`Carousel data request failed: ${response.status}`);
@@ -35,6 +35,7 @@
 
     const wrapper = document.createElement("div");
     wrapper.className = "video-carousel";
+    wrapper.classList.add(`video-carousel--${root.dataset.videoCarousel}`);
 
     const toolbar = document.createElement("div");
     toolbar.className = "carousel-toolbar";
@@ -166,6 +167,7 @@
     let frameId = 0;
     let lastTime = 0;
     let pauseUntil = 0;
+    let isVisible = !("IntersectionObserver" in window);
     let autoPosition = track.scrollLeft;
 
     wrapper.__pauseAutoScroll = (delay) => {
@@ -185,8 +187,19 @@
     track.addEventListener("wheel", () => wrapper.__pauseAutoScroll(AUTO_RESUME_DELAY_MS), { passive: true });
     track.addEventListener("touchstart", () => wrapper.__pauseAutoScroll(AUTO_RESUME_DELAY_MS), { passive: true });
 
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        isVisible = entries.some((entry) => entry.isIntersecting);
+        if (isVisible) {
+          autoPosition = track.scrollLeft;
+          lastTime = 0;
+        }
+      }, { threshold: 0.1 });
+      observer.observe(wrapper);
+    }
+
     const tick = (time) => {
-      const userInteracting = track.matches(":hover") || track.contains(document.activeElement) || time < pauseUntil;
+      const userInteracting = !isVisible || track.matches(":hover") || track.contains(document.activeElement) || time < pauseUntil;
 
       if (!document.hidden && !userInteracting) {
         const elapsed = lastTime ? time - lastTime : 0;

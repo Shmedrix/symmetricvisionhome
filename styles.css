@@ -283,6 +283,14 @@ a:hover {
   position: relative;
 }
 
+.video-carousel--shorts .video-carousel__track {
+  grid-auto-columns: minmax(190px, 21%);
+}
+
+.video-carousel--shorts .video-card__body h3 {
+  font-size: 16px;
+}
+
 .carousel-toolbar {
   display: flex;
   justify-content: flex-end;
@@ -693,6 +701,10 @@ a:hover {
 
   .video-carousel__track {
     grid-auto-columns: minmax(250px, 84%);
+  }
+
+  .video-carousel--shorts .video-carousel__track {
+    grid-auto-columns: minmax(180px, 64%);
   }
 
   .split-section,

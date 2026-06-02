@@ -95,6 +95,139 @@
       }
     ]
   },
+  "shorts": {
+    "label": "YouTube Shorts from Symmetric Vision",
+    "items": [
+      {
+        "platform": "youtube",
+        "platformLabel": "Short",
+        "videoId": "xGEssCe58Gw",
+        "title": "Found me a new friend, on psychedelics",
+        "url": "https://www.youtube.com/shorts/xGEssCe58Gw",
+        "thumbnail": "https://i.ytimg.com/vi/xGEssCe58Gw/oar2.jpg",
+        "aspectRatio": "9 / 16"
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Short",
+        "videoId": "vlGPcPHZFLQ",
+        "title": "This tree going wild on 4acodmX",
+        "url": "https://www.youtube.com/shorts/vlGPcPHZFLQ",
+        "thumbnail": "https://i.ytimg.com/vi/vlGPcPHZFLQ/oar2.jpg",
+        "aspectRatio": "9 / 16"
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Short",
+        "videoId": "D9zp20P2KdI",
+        "title": "Eye see you",
+        "url": "https://www.youtube.com/shorts/D9zp20P2KdI",
+        "thumbnail": "https://i.ytimg.com/vi/D9zp20P2KdI/oar2.jpg",
+        "aspectRatio": "9 / 16"
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Short",
+        "videoId": "Hto0cPapaJE",
+        "title": "Happens behind closed eyelids sometimes",
+        "url": "https://www.youtube.com/shorts/Hto0cPapaJE",
+        "thumbnail": "https://i.ytimg.com/vi/Hto0cPapaJE/oar2.jpg",
+        "aspectRatio": "9 / 16"
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Short",
+        "videoId": "ex7joDEC17A",
+        "title": "This tree knows some stuff (on psychedelics)",
+        "url": "https://www.youtube.com/shorts/ex7joDEC17A",
+        "thumbnail": "https://i.ytimg.com/vi/ex7joDEC17A/oar2.jpg",
+        "aspectRatio": "9 / 16"
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Short",
+        "videoId": "6WZFIriCuHA",
+        "title": "Little moment before reaching hyperspace",
+        "url": "https://www.youtube.com/shorts/6WZFIriCuHA",
+        "thumbnail": "https://i.ytimg.com/vi/6WZFIriCuHA/oar2.jpg",
+        "aspectRatio": "9 / 16"
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Short",
+        "videoId": "vMBVYFF6ZKA",
+        "title": "Looking back at yourself while transporting to the Hyperspace",
+        "url": "https://www.youtube.com/shorts/vMBVYFF6ZKA",
+        "thumbnail": "https://i.ytimg.com/vi/vMBVYFF6ZKA/oar2.jpg",
+        "aspectRatio": "9 / 16"
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Short",
+        "videoId": "ktR0_EL38ck",
+        "title": "This fallen tree is doing funny stuff to my eyes",
+        "url": "https://www.youtube.com/shorts/ktR0_EL38ck",
+        "thumbnail": "https://i.ytimg.com/vi/ktR0_EL38ck/oar2.jpg",
+        "aspectRatio": "9 / 16"
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Short",
+        "videoId": "M0Ep_kLHpeI",
+        "title": "Seeing sound on various states of consciousness",
+        "url": "https://www.youtube.com/shorts/M0Ep_kLHpeI",
+        "thumbnail": "https://i.ytimg.com/vi/M0Ep_kLHpeI/oar2.jpg",
+        "aspectRatio": "9 / 16"
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Short",
+        "videoId": "-Tv-kilkYY0",
+        "title": "This rocky path is going all funky on me",
+        "url": "https://www.youtube.com/shorts/-Tv-kilkYY0",
+        "thumbnail": "https://i.ytimg.com/vi/-Tv-kilkYY0/oar2.jpg",
+        "aspectRatio": "9 / 16"
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Short",
+        "videoId": "5SyIeKQZO6I",
+        "title": "This stone wall is going all triangle on me, on psychedelics",
+        "url": "https://www.youtube.com/shorts/5SyIeKQZO6I",
+        "thumbnail": "https://i.ytimg.com/vi/5SyIeKQZO6I/oar2.jpg",
+        "aspectRatio": "9 / 16"
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Short",
+        "videoId": "c6MNKjj61jI",
+        "title": "See you at Shankra, my friends #psychedelic",
+        "url": "https://www.youtube.com/shorts/c6MNKjj61jI",
+        "thumbnail": "https://i.ytimg.com/vi/c6MNKjj61jI/oar2.jpg",
+        "aspectRatio": "9 / 16"
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Short",
+        "videoId": "_VDuoWW7gHA",
+        "title": "3D 360 degree Hex Tunnel experiment (reupload)",
+        "url": "https://www.youtube.com/shorts/_VDuoWW7gHA",
+        "thumbnail": "https://i.ytimg.com/vi/_VDuoWW7gHA/hq720_2.jpg",
+        "aspectRatio": "9 / 16",
+        "warning": "Epilepsy warning"
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Short",
+        "videoId": "yoHJFmhiLyo",
+        "title": "3D 360 degree Hex Tunnel experiment",
+        "url": "https://www.youtube.com/shorts/yoHJFmhiLyo",
+        "thumbnail": "https://i.ytimg.com/vi/yoHJFmhiLyo/hq720_2.jpg",
+        "aspectRatio": "9 / 16",
+        "warning": "Seizure warning"
+      }
+    ]
+  },
   "performances": {
     "label": "Projection mapping performances",
     "items": [
@@ -188,4 +321,3 @@
     ]
   }
 }
-
