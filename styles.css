@@ -423,6 +423,10 @@ a:hover {
   align-items: center;
 }
 
+.split-section--story {
+  grid-template-columns: minmax(360px, 1.2fr) minmax(0, 0.8fr);
+}
+
 .split-section__media {
   border: 1px solid var(--line);
   background: var(--surface);
@@ -434,12 +438,50 @@ a:hover {
   object-fit: cover;
 }
 
+.split-section__media--video {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.inline-video {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #050505;
+}
+
+.inline-video img,
+.inline-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.inline-video img {
+  object-fit: cover;
+  opacity: 0.86;
+}
+
+.inline-video iframe {
+  border: 0;
+}
+
 .split-section__copy p:not(.eyebrow),
 .contact-card p,
 .bio-copy p,
 .rights-note p,
 .support-section p {
   color: var(--text-soft);
+}
+
+.story-quote {
+  margin-top: 28px;
+  font-size: 20px;
+}
+
+.split-section__copy .button-link {
+  margin-top: 26px;
 }
 
 .text-link {
