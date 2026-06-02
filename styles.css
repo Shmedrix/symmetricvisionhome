@@ -345,6 +345,7 @@ a:hover {
 
 .project-showcase__media-link,
 .project-showcase__media-link img,
+.project-showcase__media-link video,
 .project-showcase__player,
 .project-showcase__player iframe {
   position: absolute;
@@ -360,6 +361,17 @@ a:hover {
 
 .project-showcase__media-link img {
   object-fit: cover;
+}
+
+.project-showcase__media-link video {
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+
+.project-showcase__media.is-previewing .project-showcase__media-link video {
+  opacity: 1;
 }
 
 .project-showcase__media-link--external img {
@@ -452,7 +464,7 @@ a:hover {
 
 .project-selector {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
 }
 

@@ -106,8 +106,9 @@
   function renderActive(stage, item, index) {
     const media = document.createElement("div");
     media.className = "project-showcase__media";
-    media.dataset.previewSrc = item.embedDisabled ? "" : getPreviewEmbedSrc(item);
+    media.dataset.previewSrc = item.embedDisabled || item.previewVideo ? "" : getPreviewEmbedSrc(item);
     media.dataset.previewTitle = `${item.title} preview`;
+    media.dataset.videoSrc = item.previewVideo ? getSafeMediaSrc(item.previewVideo, "") : "";
     media.append(createMediaLink(item));
 
     if (item.warning) {
@@ -175,12 +176,22 @@
     });
     link.append(image);
 
-    if (item.embedDisabled) {
+    if (item.previewVideo) {
+      const video = document.createElement("video");
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.preload = "none";
+      video.setAttribute("aria-hidden", "true");
+      link.append(video);
+    }
+
+    if (item.embedDisabled || (item.mediaCta && !item.previewVideo)) {
       link.classList.add("project-showcase__media-link--external");
 
       const cta = document.createElement("span");
       cta.className = "project-showcase__external-cta";
-      cta.textContent = "Watch on YouTube";
+      cta.textContent = item.mediaCta || getDefaultMediaCta(item);
       link.append(cta);
     }
 
@@ -228,6 +239,23 @@
   }
 
   function loadProjectPlayer(media) {
+    const video = media.querySelector("video");
+    if (video) {
+      const src = media.dataset.videoSrc;
+      if (!src) {
+        return;
+      }
+
+      if (!video.src) {
+        video.src = src;
+      }
+
+      video.play()
+        .then(() => media.classList.add("is-previewing"))
+        .catch(() => {});
+      return;
+    }
+
     const src = media.dataset.previewSrc;
     if (!src || media.querySelector("iframe")) {
       return;
@@ -252,6 +280,12 @@
 
   function unloadProjectPlayer(media) {
     media.classList.remove("is-previewing");
+    const video = media.querySelector("video");
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
+
     const playerHost = media.querySelector(".project-showcase__player");
     if (playerHost) {
       playerHost.remove();
@@ -338,6 +372,16 @@
 
   function getDefaultUrl(item) {
     return getVideoUrl(item) || item.url || "links.html";
+  }
+
+  function getDefaultMediaCta(item) {
+    if (item.platform === "youtube") {
+      return "Watch on YouTube";
+    }
+    if (item.platform === "vimeo") {
+      return "Watch on Vimeo";
+    }
+    return "Open Project";
   }
 
   function getVideoUrl(item) {

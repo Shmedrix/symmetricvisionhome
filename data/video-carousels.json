@@ -317,6 +317,33 @@
         "warning": "Seizure warning"
       },
       {
+        "platform": "website",
+        "platformLabel": "VR research",
+        "title": "The Viscereality Project",
+        "description": "Bio-responsive VR research combining breathwork, interoception, and immersive virtual environments.",
+        "url": "https://viscereality.org/",
+        "thumbnail": "assets/media/viscereality-hero-poster.jpg",
+        "previewVideo": "assets/media/viscereality-hero-loop.mp4",
+        "mediaCta": "Visit Project",
+        "details": [
+          "The project centers on a VR application that adapts to users' breathing patterns to explore altered states of consciousness.",
+          "Symmetric Vision is credited by the project for advice and references on particle textures."
+        ]
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Research tool",
+        "videoId": "nKzIe8tn1QA",
+        "title": "The Oscilleditor",
+        "description": "Visual-replication tool and reference system from the Qualia Research Institute.",
+        "url": "https://qri.org/oscilleditor/doc/reference-manual",
+        "details": [
+          "The Oscilleditor is a WebGL2 visual simulator for psychedelic visual replication, built around pattern recognition, coupled oscillators, and layered visual effects.",
+          "Symmetric Vision contributed to the visual-replication project context alongside QRI's reference manual and demonstration video."
+        ],
+        "warning": "Seizure warning"
+      },
+      {
         "platform": "youtube",
         "platformLabel": "Film",
         "videoId": "Iems5-3t6NA",
