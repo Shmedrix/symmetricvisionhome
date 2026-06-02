@@ -1,9 +1,33 @@
 (function () {
   const DATA_URL = "data/video-carousels.json";
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const roots = Array.from(document.querySelectorAll("[data-project-showcase]"));
+  const playbackStates = new WeakMap();
+  const playbackStages = new Set();
+  const stageObserver = "IntersectionObserver" in window
+    ? new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const state = playbackStates.get(entry.target);
+        if (!state) {
+          return;
+        }
+
+        state.visible = entry.isIntersecting && entry.intersectionRatio >= 0.35;
+        updateStagePlayback(entry.target);
+      });
+    }, {
+      threshold: [0, 0.35, 0.7]
+    })
+    : null;
 
   if (!roots.length) {
     return;
+  }
+
+  if ("addEventListener" in reduceMotion) {
+    reduceMotion.addEventListener("change", updateAllPlayback);
+  } else if ("addListener" in reduceMotion) {
+    reduceMotion.addListener(updateAllPlayback);
   }
 
   fetch(DATA_URL, { cache: "no-store" })
@@ -36,6 +60,7 @@
     const stage = document.createElement("div");
     stage.className = "project-showcase__stage";
     stage.setAttribute("aria-live", "polite");
+    setupStagePlayback(stage);
 
     const nav = document.createElement("div");
     nav.className = "project-selector";
@@ -81,16 +106,9 @@
   function renderActive(stage, item, index) {
     const media = document.createElement("div");
     media.className = "project-showcase__media";
-
-    const iframe = createEmbed(item);
-    if (iframe) {
-      media.append(iframe);
-    } else {
-      const image = document.createElement("img");
-      image.alt = "";
-      image.src = getSafeMediaSrc(item.thumbnail, getDefaultThumbnail(item));
-      media.append(image);
-    }
+    media.dataset.previewSrc = getPreviewEmbedSrc(item);
+    media.dataset.previewTitle = `${item.title} preview`;
+    media.append(createMediaLink(item));
 
     if (item.warning) {
       const warning = document.createElement("span");
@@ -133,33 +151,118 @@
 
     stage.replaceChildren(media, content);
     stage.dataset.projectIndex = String(index);
+    updateStagePlayback(stage);
   }
 
-  function createEmbed(item) {
-    const src = getEmbedSrc(item);
-    if (!src) {
-      return null;
+  function createMediaLink(item) {
+    const link = document.createElement("a");
+    link.className = "project-showcase__media-link";
+    link.href = getSafeHref(getVideoUrl(item), getDefaultUrl(item));
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.setAttribute("aria-label", `Open ${item.title}`);
+
+    const image = document.createElement("img");
+    image.alt = "";
+    image.loading = "lazy";
+    image.decoding = "async";
+    image.src = getSafeMediaSrc(item.thumbnail, getDefaultThumbnail(item));
+    image.addEventListener("error", () => {
+      const fallback = getSafeMediaSrc("", item.thumbnail || "RGBDistortLogo.png");
+      if (fallback && image.src !== fallback) {
+        image.src = fallback;
+      }
+    });
+    link.append(image);
+    return link;
+  }
+
+  function setupStagePlayback(stage) {
+    playbackStages.add(stage);
+    playbackStates.set(stage, {
+      media: null,
+      visible: !stageObserver
+    });
+
+    if (stageObserver) {
+      stageObserver.observe(stage);
+    }
+  }
+
+  function updateAllPlayback() {
+    playbackStages.forEach(updateStagePlayback);
+  }
+
+  function updateStagePlayback(stage) {
+    const state = playbackStates.get(stage);
+    if (!state) {
+      return;
     }
 
+    const media = stage.querySelector(".project-showcase__media");
+    if (state.media && state.media !== media) {
+      unloadProjectPlayer(state.media);
+    }
+
+    state.media = media;
+
+    if (!media) {
+      return;
+    }
+
+    if (state.visible && !reduceMotion.matches) {
+      loadProjectPlayer(media);
+    } else {
+      unloadProjectPlayer(media);
+    }
+  }
+
+  function loadProjectPlayer(media) {
+    const src = media.dataset.previewSrc;
+    if (!src || media.querySelector("iframe")) {
+      return;
+    }
+
+    const playerHost = document.createElement("span");
+    playerHost.className = "project-showcase__player";
+
     const iframe = document.createElement("iframe");
-    iframe.title = item.title;
-    iframe.loading = "lazy";
-    iframe.allow = "encrypted-media; fullscreen; picture-in-picture";
+    iframe.title = media.dataset.previewTitle || "Project video preview";
+    iframe.loading = "eager";
+    iframe.allow = "autoplay; encrypted-media; fullscreen; picture-in-picture";
     iframe.allowFullscreen = true;
     iframe.referrerPolicy = "strict-origin-when-cross-origin";
     iframe.setAttribute("sandbox", "allow-scripts allow-same-origin allow-presentation");
     iframe.src = src;
-    return iframe;
+
+    playerHost.append(iframe);
+    media.append(playerHost);
+    media.classList.add("is-previewing");
   }
 
-  function getEmbedSrc(item) {
+  function unloadProjectPlayer(media) {
+    media.classList.remove("is-previewing");
+    const playerHost = media.querySelector(".project-showcase__player");
+    if (playerHost) {
+      playerHost.remove();
+    }
+  }
+
+  function getPreviewEmbedSrc(item) {
     if (item.platform === "youtube" && item.videoId) {
       const encodedId = encodeURIComponent(item.videoId);
       const params = new URLSearchParams({
-        controls: "1",
+        autoplay: "1",
+        controls: "0",
+        disablekb: "1",
+        fs: "0",
+        iv_load_policy: "3",
+        loop: "1",
         modestbranding: "1",
+        mute: "1",
         playsinline: "1",
-        rel: "0"
+        rel: "0",
+        playlist: item.videoId
       });
       return `https://www.youtube-nocookie.com/embed/${encodedId}?${params.toString()}`;
     }
@@ -167,8 +270,12 @@
     if (item.platform === "vimeo" && item.vimeoId) {
       const encodedId = encodeURIComponent(item.vimeoId);
       const params = new URLSearchParams({
+        autoplay: "1",
         autopause: "0",
         byline: "0",
+        controls: "0",
+        loop: "1",
+        muted: "1",
         portrait: "0",
         title: "0"
       });
@@ -220,18 +327,22 @@
   }
 
   function getDefaultUrl(item) {
+    return getVideoUrl(item) || item.url || "links.html";
+  }
+
+  function getVideoUrl(item) {
     if (item.platform === "youtube" && item.videoId) {
       return `https://www.youtube.com/watch?v=${encodeURIComponent(item.videoId)}`;
     }
     if (item.platform === "vimeo" && item.vimeoId) {
       return `https://vimeo.com/${encodeURIComponent(item.vimeoId)}`;
     }
-    return "links.html";
+    return "";
   }
 
   function getDefaultThumbnail(item) {
     if (item.platform === "youtube" && item.videoId) {
-      return `https://i.ytimg.com/vi/${encodeURIComponent(item.videoId)}/hqdefault.jpg`;
+      return `https://i.ytimg.com/vi/${encodeURIComponent(item.videoId)}/hq720.jpg`;
     }
     return item.thumbnail || "RGBDistortLogo.png";
   }
