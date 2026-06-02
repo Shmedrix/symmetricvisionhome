@@ -753,6 +753,15 @@ a:hover {
   align-items: start;
 }
 
+.contact-title {
+  max-width: 860px;
+}
+
+.contact-grid--lead {
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  align-items: stretch;
+}
+
 .contact-card,
 .bio-copy,
 .rights-note,
@@ -760,6 +769,36 @@ a:hover {
   border: 1px solid var(--line);
   background: var(--surface);
   padding: 26px;
+}
+
+.contact-card--primary,
+.contact-card--scope {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-card--primary {
+  min-height: 280px;
+  justify-content: space-between;
+  background: var(--surface-strong);
+}
+
+.contact-card--scope {
+  justify-content: flex-start;
+}
+
+.contact-list {
+  display: grid;
+  gap: 12px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-soft);
+}
+
+.contact-list li {
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
 }
 
 .contact-card .button-row,
@@ -770,6 +809,11 @@ a:hover {
 .rights-note,
 .support-section {
   margin-top: 28px;
+}
+
+.contact-projects {
+  padding-inline: 0;
+  padding-bottom: 32px;
 }
 
 .support-section {
