@@ -7,6 +7,7 @@
     <meta name="description" content="About Symmetric Vision and contact links for projects in video production, VFX, visionary art, 3D, VR, and projection mapping.">
     <link rel="icon" href="Symmetric%20Vision%20logo.png">
     <link rel="stylesheet" href="styles.css?v=20260602-hero-footer-warnings">
+    <script src="scripts/contact-form.js?v=20260602-mailto" defer></script>
     <script src="scripts/video-carousel.js?v=20260602-projects-page-2" defer></script>
   </head>
   <body>
@@ -50,6 +51,44 @@
             <li>3D/VR experiences, perceptual research visuals, and simulation work.</li>
           </ul>
         </aside>
+      </section>
+
+      <section class="contact-form-section" aria-labelledby="contact-form-title">
+        <div class="contact-form-section__copy">
+          <p class="eyebrow">Get in Touch</p>
+          <h2 id="contact-form-title">Contact Me</h2>
+          <p>Have an idea for a project? Want to see inanimate objects come to life? Maybe you would like to see your images having a new breath of life, share feedback, or just chat?</p>
+          <p>Let me know.</p>
+        </div>
+        <form class="contact-form" data-contact-form data-contact-email="symmetricvision@symmetric-vision.xyz" aria-describedby="contact-form-note">
+          <div class="contact-form__grid">
+            <label class="contact-form__field">
+              <span>First Name</span>
+              <input autocomplete="given-name" name="first-name" required type="text">
+            </label>
+            <label class="contact-form__field">
+              <span>Last Name</span>
+              <input autocomplete="family-name" name="last-name" type="text">
+            </label>
+          </div>
+          <label class="contact-form__field">
+            <span>Email</span>
+            <input autocomplete="email" name="email" required type="email">
+          </label>
+          <label class="contact-form__field">
+            <span>Message</span>
+            <textarea name="message" placeholder="Type your message here..." required rows="7"></textarea>
+          </label>
+          <label class="contact-form__trap" aria-hidden="true">
+            <span>Website</span>
+            <input autocomplete="off" name="website" tabindex="-1" type="text">
+          </label>
+          <div class="contact-form__footer">
+            <p id="contact-form-note" class="contact-form__note">This opens your email app with the message filled in. GitHub Pages does not store form submissions.</p>
+            <button class="button-link contact-form__submit" type="submit">Submit</button>
+          </div>
+          <p class="contact-form__status" data-contact-status role="status" aria-live="polite"></p>
+        </form>
       </section>
 
       <section class="rights-note">

@@ -4,9 +4,10 @@ Checked on 2026-06-02 for publication as a public GitHub Pages site.
 
 ## Contact
 
-- The site does not include a message-submission form.
-- The About/Contact page uses outbound contact links only, so GitHub Pages does not collect visitor names, emails, messages, IPs, or form submissions.
-- If a real form is added later, use a static-form provider endpoint or a serverless backend. Do not place API keys, access tokens, Instagram tokens, SMTP credentials, or private webhook secrets in HTML, JSON, or browser JavaScript.
+- The About/Contact page includes a contact form that builds a `mailto:` link in the browser.
+- GitHub Pages does not process, store, or receive visitor names, emails, messages, IPs, or form submissions from this form.
+- The form uses the public support email and does not include API keys, access tokens, Instagram tokens, SMTP credentials, webhook secrets, or third-party form provider credentials in HTML, JSON, or browser JavaScript.
+- If this is later converted to a true server-submitted form, use a static-form provider endpoint or a serverless backend and keep all secrets server-side.
 
 ## Media
 
@@ -31,4 +32,3 @@ Checked on 2026-06-02 for publication as a public GitHub Pages site.
 
 - Wix capture artifacts under `docs/reference/` are intentionally ignored by `.gitignore`.
 - Only `docs/WIX_STYLE_REFERENCE.md` and this review document are meant to remain in the repo.
-
