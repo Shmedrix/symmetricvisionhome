@@ -305,18 +305,77 @@
     "items": [
       {
         "platform": "youtube",
-        "videoId": "fHIrMY9o7Eo",
-        "title": "Parvati Records 20th Anniversary",
-        "description": "Cover art and visuals for the Parvati Records anniversary presentation."
+        "platformLabel": "VR experience",
+        "videoId": "oWADqXUrEfk",
+        "title": "Sensory Overload 3D/VR Experience",
+        "description": "Research and visual-effects production for a classroom sensory overload VR experience.",
+        "details": [
+          "Independent research on subjective visual and audio effects experienced by people on the Autism spectrum while undergoing sensory overload, plus production and coordination of visual effects for a VR experience used in schools and public spaces.",
+          "The classroom setting was chosen to replicate possible triggers such as sudden noises, too much eye contact, sudden movements, unexpected events, and other everyday overload conditions.",
+          "Developed within the project Piedzīvo citādo in cooperation with the multifunctional center Solis Augšup. Project co-financed by the Riga City Council Education, Culture and Sports Department Public Integration Program."
+        ],
+        "warning": "Seizure warning"
       },
       {
-        "platform": "external",
+        "platform": "youtube",
         "platformLabel": "Film",
+        "videoId": "Iems5-3t6NA",
+        "title": "Legend of Bryngolau (2020)",
+        "description": "A psychedelic film teaser set in the Cambrian Mountains.",
+        "details": [
+          "The Legend of Bryngolau tells the story of a wandering hippy called Rick travelling through the Cambrian Mountains on his bicycle.",
+          "He stops by a lake to set up camp and forages his dinner from the landscape. When night falls, after a bowl of wild mushroom stew, a cowboy appears from the darkness and Rick's trip begins."
+        ],
+        "url": "https://www.kickstarter.com/projects/amydaniel/the-legend-of-bryngolau"
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Music video",
+        "videoId": "ySpdq-zoBJI",
+        "title": "Enter The Illusion by Noove",
+        "description": "Music video visuals for Noove on OSOM Music.",
+        "details": [
+          "A full music-video visual piece for Noove's Enter The Illusion, released through OSOM Music."
+        ],
+        "url": "https://osom-music.bandcamp.com/"
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Album visuals",
+        "videoId": "fHIrMY9o7Eo",
+        "title": "Parvati Records 20th Anniversary",
+        "description": "Cover art and visuals for the Parvati Records 20th anniversary album release presentation.",
+        "details": [
+          "Cover art and visuals for the presentation of Parvati Records' 20th anniversary album release."
+        ]
+      },
+      {
+        "platform": "vimeo",
+        "platformLabel": "Film",
+        "vimeoId": "392447568",
         "title": "Troubled Minds (2021)",
         "description": "VFX elements for the film Troubled Minds.",
         "url": "https://www.filmstritone.com/troubledminds",
         "thumbnail": "eyelogo.jpg",
-        "aspectRatio": "16 / 9"
+        "aspectRatio": "16 / 9",
+        "details": [
+          "Brothers Robert and Martin are one month away from their contemporary art exhibition. In an effort to get his creative juices flowing, Martin confines himself in a dark black cube, alone, for nine days.",
+          "Once out, the brothers begin to lose control through bad ideas, too much liquor, psychedelic drugs, and a total lack of sleep. Robert fails with his ambition to create a society-shocking exhibition while Martin's behavior becomes more extravagant and unpredictable.",
+          "As tension increases, they make a daunting performance and things erupt at an exclusive gathering for investors and contemporary artists. Martin flees to Saami Lapland, and Robert begins a journey to find his bipolar brother."
+        ]
+      },
+      {
+        "platform": "vimeo",
+        "platformLabel": "Film",
+        "vimeoId": "350625891",
+        "title": "Mr. Weekend (2020)",
+        "description": "VFX for the psychedelic trip sequence.",
+        "url": "https://www.imdb.com/title/tt6209942/",
+        "thumbnail": "RGBDistortLogo.png",
+        "aspectRatio": "16 / 9",
+        "details": [
+          "VFX work for the psychedelic trip sequence in Mr. Weekend."
+        ]
       }
     ]
   }

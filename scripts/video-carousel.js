@@ -404,6 +404,9 @@
     if (platform === "instagram") {
       return "Instagram";
     }
+    if (platform === "vimeo") {
+      return "Vimeo";
+    }
     return "Media";
   }
 }());
