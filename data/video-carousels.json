@@ -7,7 +7,7 @@
         "videoId": "YVHQzyfnFJA",
         "title": "Psychedelic Replication Compilation 2024",
         "description": "A recent compilation of altered-perception visual experiments.",
-        "warning": "Flashing visuals"
+        "warning": "Flashing lights"
       },
       {
         "platform": "youtube",
@@ -26,7 +26,7 @@
         "videoId": "FASDsK4T144",
         "title": "Memory from Dead Mans Trip v14",
         "description": "DMT trip replication experiment.",
-        "warning": "Epilepsy warning"
+        "warning": "Flashing lights"
       },
       {
         "platform": "youtube",
@@ -39,7 +39,7 @@
         "videoId": "vHluVgSyNK8",
         "title": "Differences in hallucinations across altered states",
         "description": "A visual comparison of subjective perceptual states.",
-        "warning": "Flashing visuals"
+        "warning": "Flashing lights"
       },
       {
         "platform": "youtube",
@@ -64,21 +64,21 @@
         "videoId": "WRHCVUyAbJ8",
         "title": "Psychedelic Replication compilation 2020",
         "description": "Earlier compilation from the replication archive.",
-        "warning": "Flashing visuals"
+        "warning": "Flashing lights"
       },
       {
         "platform": "youtube",
         "videoId": "ph4szaVTWSY",
         "title": "Memory from Dead Mans Trip v7",
         "description": "DMT visuals experiment.",
-        "warning": "Seizure warning"
+        "warning": "Flashing lights"
       },
       {
         "platform": "youtube",
         "videoId": "NL8G1WcHazE",
         "title": "360 degree Psychedelic Visuals experiment v6",
         "description": "Immersive 360 visual experiment.",
-        "warning": "Flashing visuals"
+        "warning": "Flashing lights"
       },
       {
         "platform": "youtube",
@@ -91,7 +91,7 @@
         "videoId": "oWADqXUrEfk",
         "title": "Classroom Sensory Overload",
         "description": "Sensory overload visual experiment.",
-        "warning": "Seizure warning"
+        "warning": "Flashing lights"
       }
     ]
   },
@@ -214,7 +214,7 @@
         "url": "https://www.youtube.com/shorts/_VDuoWW7gHA",
         "thumbnail": "https://i.ytimg.com/vi/_VDuoWW7gHA/hq720_2.jpg",
         "aspectRatio": "9 / 16",
-        "warning": "Epilepsy warning"
+        "warning": "Flashing lights"
       },
       {
         "platform": "youtube",
@@ -224,7 +224,7 @@
         "url": "https://www.youtube.com/shorts/yoHJFmhiLyo",
         "thumbnail": "https://i.ytimg.com/vi/yoHJFmhiLyo/hq720_2.jpg",
         "aspectRatio": "9 / 16",
-        "warning": "Seizure warning"
+        "warning": "Flashing lights"
       }
     ]
   },
@@ -242,7 +242,7 @@
         "videoId": "2zP-oE3xWh0",
         "title": "Bending pixels and brains at Terra Festival 2025",
         "description": "Festival visual performance.",
-        "warning": "Flashing visuals"
+        "warning": "Flashing lights"
       },
       {
         "platform": "youtube",
@@ -314,7 +314,7 @@
           "The classroom setting was chosen to replicate possible triggers such as sudden noises, too much eye contact, sudden movements, unexpected events, and other everyday overload conditions.",
           "Developed within the project Piedzīvo citādo in cooperation with the multifunctional center Solis Augšup. Project co-financed by the Riga City Council Education, Culture and Sports Department Public Integration Program."
         ],
-        "warning": "Seizure warning"
+        "warning": "Flashing lights"
       },
       {
         "platform": "website",
@@ -341,7 +341,7 @@
           "The Oscilleditor is a WebGL2 visual simulator for psychedelic visual replication, built around pattern recognition, coupled oscillators, and layered visual effects.",
           "Symmetric Vision contributed to the visual-replication project context alongside QRI's reference manual and demonstration video."
         ],
-        "warning": "Seizure warning"
+        "warning": "Flashing lights"
       },
       {
         "platform": "youtube",

@@ -157,16 +157,9 @@ a:hover {
 .hero__content {
   position: relative;
   z-index: 1;
-  width: min(760px, calc(100% - 40px));
+  width: min(1060px, calc(100% - 40px));
   margin: 64px auto;
   text-align: center;
-}
-
-.hero__logo {
-  width: 176px;
-  height: 176px;
-  object-fit: contain;
-  margin: 0 auto 28px;
 }
 
 .hero h1,
@@ -180,10 +173,13 @@ a:hover {
 }
 
 .hero h1 {
+  position: relative;
+  display: inline-block;
   text-shadow:
-    -0.08em -0.055em 0 rgba(105, 0, 0, 0.56),
-    0.07em 0.06em 0 rgba(0, 72, 88, 0.62),
+    -0.05em -0.035em 0 rgba(105, 0, 0, 0.54),
+    0.05em 0.04em 0 rgba(0, 72, 88, 0.58),
     0 2px 18px rgba(0, 0, 0, 0.82);
+  animation: hero-title-drift 8.5s ease-in-out infinite alternate;
 }
 
 .hero p {
@@ -236,21 +232,6 @@ a:hover {
 .carousel-button:hover {
   background: rgba(255, 255, 255, 0.16);
   border-color: var(--text);
-}
-
-.notice-band {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 18px var(--gutter);
-  color: var(--text-soft);
-  font-size: 14px;
-}
-
-.notice-band p {
-  margin: 0;
-  padding: 12px 16px;
-  border: 1px solid rgba(255, 91, 216, 0.46);
-  background: rgba(255, 91, 216, 0.08);
 }
 
 .section-shell,
@@ -940,11 +921,6 @@ a:hover {
   margin: 4px 0;
 }
 
-.site-footer a {
-  color: var(--text-soft);
-  border-bottom: 1px solid var(--line);
-}
-
 @media (max-width: 900px) {
   .site-header {
     align-items: flex-start;
@@ -966,11 +942,6 @@ a:hover {
 
   .hero p {
     font-size: 18px;
-  }
-
-  .hero__logo {
-    width: 136px;
-    height: 136px;
   }
 
   .section-heading {
@@ -1102,5 +1073,30 @@ a:hover {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+}
+
+@keyframes hero-title-drift {
+  0% {
+    transform: translate3d(-4px, 2px, 0);
+    text-shadow:
+      -0.045em -0.032em 0 rgba(105, 0, 0, 0.5),
+      0.048em 0.038em 0 rgba(0, 72, 88, 0.54),
+      0 2px 18px rgba(0, 0, 0, 0.82);
+  }
+
+  45% {
+    text-shadow:
+      -0.062em -0.038em 0 rgba(105, 0, 0, 0.58),
+      0.04em 0.052em 0 rgba(0, 86, 106, 0.6),
+      0 2px 18px rgba(0, 0, 0, 0.82);
+  }
+
+  100% {
+    transform: translate3d(4px, -2px, 0);
+    text-shadow:
+      -0.04em -0.046em 0 rgba(105, 0, 0, 0.54),
+      0.064em 0.034em 0 rgba(0, 72, 88, 0.62),
+      0 2px 18px rgba(0, 0, 0, 0.82);
   }
 }

@@ -132,7 +132,7 @@
     if (item.warning) {
       const warning = document.createElement("span");
       warning.className = "video-card__warning";
-      warning.textContent = item.warning;
+      warning.textContent = "Flashing lights";
       media.append(warning);
     }
 
