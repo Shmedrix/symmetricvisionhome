@@ -4,10 +4,10 @@ Checked on 2026-06-02 for publication as a public GitHub Pages site.
 
 ## Contact
 
-- The About/Contact page includes a contact form that builds a `mailto:` link in the browser.
+- The About/Contact page submits through Web3Forms using a public access key.
 - GitHub Pages does not process, store, or receive visitor names, emails, messages, IPs, or form submissions from this form.
-- The form uses the public support email and does not include API keys, access tokens, Instagram tokens, SMTP credentials, webhook secrets, or third-party form provider credentials in HTML, JSON, or browser JavaScript.
-- If this is later converted to a true server-submitted form, use a static-form provider endpoint or a serverless backend and keep all secrets server-side.
+- Web3Forms receives the submitted form data and delivers the notification email. Treat the Web3Forms account/dashboard as the form-submission processor.
+- The form does not include SMTP credentials, private webhook secrets, Instagram tokens, or server-side API secrets in HTML, JSON, or browser JavaScript.
 
 ## Media
 

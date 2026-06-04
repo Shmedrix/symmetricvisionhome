@@ -3,8 +3,13 @@
 
   forms.forEach((form) => {
     const status = form.querySelector("[data-contact-status]");
+    const submitButton = form.querySelector("[type='submit']");
 
-    form.addEventListener("submit", (event) => {
+    if (new URLSearchParams(window.location.search).get("sent") === "true") {
+      setStatus(status, "Thanks. Your message has been sent.", "success");
+    }
+
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       if (!form.reportValidity()) {
@@ -13,33 +18,42 @@
 
       const formData = new FormData(form);
       if (String(formData.get("website") || "").trim()) {
-        setStatus(status, "Thanks. Your message has been received.");
+        setStatus(status, "Thanks. Your message has been sent.", "success");
         form.reset();
         return;
       }
 
-      const recipient = String(form.dataset.contactEmail || "").trim();
-      if (!recipient) {
-        setStatus(status, "Contact email is not configured yet.");
-        return;
-      }
-
-      const firstName = cleanValue(formData.get("first-name"));
-      const lastName = cleanValue(formData.get("last-name"));
-      const senderEmail = cleanValue(formData.get("email"));
-      const message = cleanMessage(formData.get("message"));
+      const firstName = cleanValue(formData.get("first_name"));
+      const lastName = cleanValue(formData.get("last_name"));
       const fullName = [firstName, lastName].filter(Boolean).join(" ") || "Website visitor";
-      const subject = `Symmetric Vision inquiry from ${fullName}`;
-      const body = [
-        `Name: ${fullName}`,
-        `Email: ${senderEmail}`,
-        "",
-        "Message:",
-        message
-      ].join("\n");
+      formData.set("name", fullName);
+      formData.delete("website");
 
-      setStatus(status, "Opening your email app...");
-      window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setSending(submitButton, true);
+      setStatus(status, "Sending...", "");
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method || "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: JSON.stringify(Object.fromEntries(formData))
+        });
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok || result.success === false) {
+          throw new Error(result.message || "Message could not be sent.");
+        }
+
+        form.reset();
+        setStatus(status, "Thanks. Your message has been sent.", "success");
+      } catch (error) {
+        setStatus(status, error.message || "Message could not be sent. Please try again.", "error");
+      } finally {
+        setSending(submitButton, false);
+      }
     });
   });
 
@@ -47,17 +61,19 @@
     return String(value || "").replace(/\s+/g, " ").trim();
   }
 
-  function cleanMessage(value) {
-    return String(value || "")
-      .replace(/\r\n/g, "\n")
-      .replace(/[ \t]+\n/g, "\n")
-      .replace(/\n{4,}/g, "\n\n\n")
-      .trim();
+  function setSending(button, isSending) {
+    if (!button) {
+      return;
+    }
+
+    button.disabled = isSending;
+    button.textContent = isSending ? "Sending..." : "Submit";
   }
 
-  function setStatus(status, message) {
+  function setStatus(status, message, state) {
     if (status) {
       status.textContent = message;
+      status.dataset.state = state || "";
     }
   }
 })();

@@ -7,7 +7,7 @@
     <meta name="description" content="About Symmetric Vision and contact links for projects in video production, VFX, visionary art, 3D, VR, and projection mapping.">
     <link rel="icon" href="Symmetric%20Vision%20logo.png">
     <link rel="stylesheet" href="styles.css?v=20260602-hero-footer-warnings">
-    <script src="scripts/contact-form.js?v=20260602-mailto" defer></script>
+    <script src="scripts/contact-form.js?v=20260604-web3forms" defer></script>
     <script src="scripts/video-carousel.js?v=20260602-projects-page-2" defer></script>
   </head>
   <body>
@@ -60,15 +60,19 @@
           <p>Have an idea for a project? Want to see inanimate objects come to life? Maybe you would like to see your images having a new breath of life, share feedback, or just chat?</p>
           <p>Let me know.</p>
         </div>
-        <form class="contact-form" data-contact-form data-contact-email="symmetricvision@symmetric-vision.xyz" aria-describedby="contact-form-note">
+        <form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST" data-contact-form aria-describedby="contact-form-note">
+          <input type="hidden" name="access_key" value="0c7d85e8-827c-4c28-9021-be5d604af484">
+          <input type="hidden" name="subject" value="New Symmetric Vision website inquiry">
+          <input type="hidden" name="from_name" value="Symmetric Vision Website">
+          <input type="hidden" name="redirect" value="https://symmetric-vision.xyz/about-contact.html?sent=true#contact-form">
           <div class="contact-form__grid">
             <label class="contact-form__field">
               <span>First Name</span>
-              <input autocomplete="given-name" name="first-name" required type="text">
+              <input autocomplete="given-name" name="first_name" required type="text">
             </label>
             <label class="contact-form__field">
               <span>Last Name</span>
-              <input autocomplete="family-name" name="last-name" type="text">
+              <input autocomplete="family-name" name="last_name" type="text">
             </label>
           </div>
           <label class="contact-form__field">
@@ -83,8 +87,9 @@
             <span>Website</span>
             <input autocomplete="off" name="website" tabindex="-1" type="text">
           </label>
+          <input class="contact-form__botcheck" name="botcheck" tabindex="-1" type="checkbox">
           <div class="contact-form__footer">
-            <p id="contact-form-note" class="contact-form__note">This opens your email app with the message filled in. GitHub Pages does not store form submissions.</p>
+            <p id="contact-form-note" class="contact-form__note">This sends through Web3Forms. GitHub Pages does not store form submissions.</p>
             <button class="button-link contact-form__submit" type="submit">Submit</button>
           </div>
           <p class="contact-form__status" data-contact-status role="status" aria-live="polite"></p>
