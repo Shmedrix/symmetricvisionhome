@@ -111,6 +111,10 @@
     media.dataset.videoSrc = item.previewVideo ? getSafeMediaSrc(item.previewVideo, "") : "";
     media.append(createMediaLink(item));
 
+    if (item.fullscreen && item.previewVideo) {
+      media.append(createFullscreenButton(media, item));
+    }
+
     if (item.warning) {
       const warning = document.createElement("span");
       warning.className = "video-card__warning";
@@ -196,6 +200,81 @@
     }
 
     return link;
+  }
+
+  function createFullscreenButton(media, item) {
+    const button = document.createElement("button");
+    button.className = "project-showcase__fullscreen";
+    button.type = "button";
+    button.textContent = item.fullscreenLabel || "Fullscreen";
+    button.setAttribute("aria-label", `Open ${item.title} fullscreen`);
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      openFullscreenVideo(media);
+    });
+    return button;
+  }
+
+  function openFullscreenVideo(media) {
+    const video = media.querySelector("video");
+    const src = media.dataset.videoSrc;
+    if (!video || !src) {
+      return;
+    }
+
+    if (!video.src) {
+      video.src = src;
+    }
+
+    video.controls = true;
+    video.muted = true;
+    video.loop = true;
+    media.classList.add("is-previewing");
+    removeControlsAfterFullscreen(video);
+
+    video.play().catch(() => {});
+
+    const requestFullscreen = video.requestFullscreen
+      || video.webkitRequestFullscreen
+      || video.msRequestFullscreen;
+
+    if (typeof requestFullscreen === "function") {
+      const result = requestFullscreen.call(video);
+      if (result && typeof result.catch === "function") {
+        result.catch(() => {
+          video.controls = false;
+        });
+      }
+      return;
+    }
+
+    if (typeof video.webkitEnterFullscreen === "function") {
+      video.webkitEnterFullscreen();
+      return;
+    }
+
+    const popup = window.open(src, "_blank", "noopener,noreferrer");
+    if (popup) {
+      popup.opener = null;
+    }
+    video.controls = false;
+  }
+
+  function removeControlsAfterFullscreen(video) {
+    const cleanup = () => {
+      if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+        video.controls = false;
+        document.removeEventListener("fullscreenchange", cleanup);
+        document.removeEventListener("webkitfullscreenchange", cleanup);
+      }
+    };
+
+    document.addEventListener("fullscreenchange", cleanup);
+    document.addEventListener("webkitfullscreenchange", cleanup);
+    video.addEventListener("webkitendfullscreen", () => {
+      video.controls = false;
+    }, { once: true });
   }
 
   function setupStagePlayback(stage) {

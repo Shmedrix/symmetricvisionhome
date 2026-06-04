@@ -304,6 +304,22 @@
     "label": "Larger projects",
     "items": [
       {
+        "platform": "website",
+        "platformLabel": "Contest winner",
+        "title": "Can You See Us? (PsyCrypto Contest Winner)",
+        "description": "First-place winner of QRI's Non-Ordinary States of Consciousness Contest: Psychedelic Cryptography.",
+        "url": "https://qri.org/blog/psycrypto-contest",
+        "thumbnail": "assets/media/psycrypro-winner-symmetric-vision-poster.jpg",
+        "previewVideo": "assets/media/psycrypro-winner-symmetric-vision-watermarked.mp4",
+        "fullscreen": true,
+        "fullscreenLabel": "Fullscreen Loop",
+        "details": [
+          "QRI listed Raimonds Jermaks (Symmetric Vision) as the winning artist for the PsyCrypto contest, with the entry titled Can You see us? and a score of 87.3.",
+          "The loop explores tracer-based visual encoding: sober viewers see abstract wavy motion, while the hidden image can emerge for viewers experiencing strong visual tracers.",
+          "QRI's judging commentary described the piece as standing out because the encoded content was comparatively easy to decode in the right perceptual state."
+        ]
+      },
+      {
         "platform": "youtube",
         "platformLabel": "VR experience",
         "videoId": "oWADqXUrEfk",
