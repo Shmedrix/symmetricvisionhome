@@ -2,15 +2,28 @@
 
 Static GitHub Pages site for Symmetric Vision.
 
-The current Pages target is the default project URL:
+## Live site
+
+```text
+https://symmetric-vision.xyz/
+```
+
+Fallback GitHub Pages URL:
 
 ```text
 https://shmedrix.github.io/symmetricvisionhome/
 ```
 
-Current remote state checked on 2026-06-01: the repository is private and GitHub Pages is not enabled. A repo admin needs to open GitHub repository settings and enable Pages from `main` / root. If GitHub does not allow Pages publishing from this private repository on the current plan, make the repository public or use a plan that supports private Pages.
+GitHub Pages publishes from the `main` branch and repository root. The custom domain is configured by the root `CNAME` file.
 
-The custom domain `symmetricvision.xyz` is intentionally not configured yet. When domain access is ready, add the GitHub Pages custom domain in repository settings and create the required DNS records in Wix.
+## Maintenance guide
+
+The owner-facing maintenance guide is available here:
+
+- [PDF guide](docs/WEBSITE_MAINTENANCE_GUIDE.pdf)
+- [LaTeX source](docs/WEBSITE_MAINTENANCE_GUIDE.tex)
+
+It covers browser edits through GitHub, local preview, carousel data, media safety, contact form settings, DNS/domain notes, and a testing checklist.
 
 ## Local preview
 

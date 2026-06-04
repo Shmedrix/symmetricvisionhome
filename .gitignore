@@ -2,3 +2,9 @@ tmp/
 docs/reference/
 .DS_Store
 Thumbs.db
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc

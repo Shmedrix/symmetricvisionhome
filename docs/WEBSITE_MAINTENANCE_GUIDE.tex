@@ -1,0 +1,549 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.82in]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{fancyhdr}
+
+\definecolor{svblack}{HTML}{000000}
+\definecolor{svgray}{HTML}{333333}
+\definecolor{svmuted}{HTML}{666666}
+\definecolor{svlink}{HTML}{005C73}
+\definecolor{svcode}{HTML}{F4F4F4}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=svlink,
+  urlcolor=svlink,
+  pdftitle={Symmetric Vision Website Maintenance Guide},
+  pdfauthor={Symmetric Vision},
+  pdfsubject={GitHub Pages website maintenance}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Symmetric Vision}
+\rhead{Website Maintenance Guide}
+\cfoot{\thepage}
+\setlength{\headheight}{14pt}
+
+\lstdefinestyle{svcode}{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{svcode},
+  frame=single,
+  breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false
+}
+\lstset{style=svcode}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+\setlength{\emergencystretch}{4em}
+\renewcommand{\arraystretch}{1.25}
+
+\title{\Huge Symmetric Vision Website Maintenance Guide\\[0.4em]
+\large How to update the public GitHub Pages site}
+\author{For Symmetric Vision}
+\date{Last updated: June 4, 2026}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Purpose}
+
+This guide explains how to make safe changes to the Symmetric Vision website through the public GitHub repository. It is written for the site owner, so it focuses on practical editing workflows and the parts of the site that are most likely to change: text, links, video carousels, project entries, contact form settings, media, and the custom domain.
+
+\section{Current Site Setup}
+
+\begin{longtable}{>{\bfseries}p{0.26\linewidth}p{0.66\linewidth}}
+Repository & \url{https://github.com/Shmedrix/symmetricvisionhome}\\
+Live site & \url{https://symmetric-vision.xyz/}\\
+Fallback GitHub Pages URL & \url{https://shmedrix.github.io/symmetricvisionhome/}\\
+Publishing source & Branch \texttt{main}, folder \texttt{/} (repository root)\\
+Custom domain file & \texttt{CNAME}, containing \texttt{symmetric-vision.xyz}\\
+Contact form provider & Web3Forms, posting to \url{https://api.web3forms.com/submit}\\
+Site type & Static HTML, CSS, JavaScript, and public media hosted by GitHub Pages\\
+\end{longtable}
+
+GitHub Pages automatically republishes the site after changes are committed to the \texttt{main} branch. For official details on branch publishing, see GitHub's Pages publishing source documentation:
+
+\url{https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site}
+
+\section{Golden Rules}
+
+\begin{enumerate}
+  \item Treat everything committed to the repo as public. GitHub Pages files are publicly readable and downloadable.
+  \item Do not commit private client files, raw source project files, unreleased media, passwords, API secrets, SMTP credentials, account exports, or private access tokens.
+  \item Keep \texttt{CNAME} in the repository root unless intentionally changing the domain.
+  \item Keep the Namecheap GitHub verification TXT record unless intentionally moving the domain away from GitHub Pages.
+  \item Make small, named commits. A good commit message says what changed, for example: \texttt{Add MoDem 2026 performance video}.
+  \item Preview changes before assuming they are live.
+  \item For videos, prefer YouTube/Vimeo embeds or links over committing large video files directly.
+\end{enumerate}
+
+\section{Choosing an Editing Workflow}
+
+There are two good ways to edit the site.
+
+\subsection{Fast Edits in the GitHub Website}
+
+Use this for small text changes, link changes, and JSON carousel edits.
+
+\begin{enumerate}
+  \item Open the repo: \url{https://github.com/Shmedrix/symmetricvisionhome}.
+  \item Open the file you want to edit.
+  \item Click the pencil/edit button.
+  \item Make the change.
+  \item Scroll to the commit box.
+  \item Write a short commit message.
+  \item Commit directly to \texttt{main} for small safe changes, or create a branch if you want to review first.
+  \item Wait for GitHub Pages to rebuild, then check \url{https://symmetric-vision.xyz/}.
+\end{enumerate}
+
+Official GitHub docs for editing files in the browser:
+
+\url{https://docs.github.com/articles/editing-files-in-another-user-s-repository}
+
+Official GitHub docs for adding or uploading files:
+
+\url{https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository}
+
+\subsection{Local Edits on Your Computer}
+
+Use this for bigger changes, layout work, or anything that needs visual testing before publishing.
+
+\begin{lstlisting}[language=bash]
+git clone https://github.com/Shmedrix/symmetricvisionhome.git
+cd symmetricvisionhome
+python -m http.server 8010 --bind 127.0.0.1
+\end{lstlisting}
+
+Then open:
+
+\begin{lstlisting}
+http://127.0.0.1:8010/
+\end{lstlisting}
+
+After editing, commit and push:
+
+\begin{lstlisting}[language=bash]
+git status
+git add .
+git commit -m "Describe the change"
+git push origin main
+\end{lstlisting}
+
+Official GitHub docs for cloning a repository:
+
+\url{https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository}
+
+\section{Repository Map}
+
+\begin{longtable}{>{\ttfamily}p{0.35\linewidth}p{0.57\linewidth}}
+index.html & Home page: hero, featured videos, YouTube shorts, story section, performance carousel, Instagram link area.\\
+projects.html & Project archive page. Uses the \texttt{projects} data set from \texttt{data/video-carousels.json}.\\
+about-contact.html & About/contact page, project inquiries, contact form, support links, and project carousel.\\
+links.html & Link hub page for social, shop, support, and community links.\\
+styles.css & Main visual design: layout, colors, spacing, buttons, responsive rules.\\
+data/video-carousels.json & Main media/project data file. Most video cards and project panels are changed here.\\
+scripts/video-carousel.js & Builds the horizontal carousels from the JSON data. Usually do not edit for content changes.\\
+scripts/project-showcase.js & Builds the large projects carousel on \texttt{projects.html}. Usually do not edit for content changes.\\
+scripts/contact-form.js & Handles the Web3Forms submit flow and success/error status.\\
+scripts/hero-title-liquid.js & WebGL liquid title effect on the home page. Do not edit unless changing animation behavior.\\
+CNAME & Custom domain binding. Must contain \texttt{symmetric-vision.xyz}.\\
+.nojekyll & Tells GitHub Pages not to run Jekyll processing. Keep it.\\
+docs/ & Internal documentation, risk notes, and this maintenance guide.\\
+tmp/ & Local test artifacts. Should not be used for permanent site content.\\
+\end{longtable}
+
+\section{Common Changes}
+
+\subsection{Change Text on a Page}
+
+Open the relevant HTML file and edit the visible text between tags. For example, on \texttt{about-contact.html}, this text:
+
+\begin{lstlisting}[language=HTML]
+<h2>Project inquiries</h2>
+<p>Open for work in video production...</p>
+\end{lstlisting}
+
+After changing HTML, preview the page and check mobile width as well as desktop width.
+
+HTML reference:
+
+\url{https://developer.mozilla.org/en-US/docs/Web/HTML/Reference}
+
+\subsection{Change Navigation}
+
+The navigation is repeated in each page:
+
+\begin{lstlisting}[language=HTML]
+<nav class="site-nav" aria-label="Primary">
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="about-contact.html">About/Contact</a>
+  <a href="links.html">Links</a>
+</nav>
+\end{lstlisting}
+
+If you add or rename navigation items, update all HTML pages consistently.
+
+\subsection{Change Links on the Links Page}
+
+Open \texttt{links.html}. Each button is an \texttt{a} tag:
+
+\begin{lstlisting}[language=HTML]
+<a href="https://www.instagram.com/inner.reflection/"
+   target="_blank"
+   rel="noopener noreferrer">Instagram</a>
+\end{lstlisting}
+
+Keep \texttt{target="\_blank"} and \texttt{rel="noopener noreferrer"} for external links.
+
+\subsection{Add a YouTube Video to a Carousel}
+
+Most media cards live in \texttt{data/video-carousels.json}. Find the relevant section:
+
+\begin{itemize}
+  \item \texttt{featured}: main home page video carousel.
+  \item \texttt{shorts}: YouTube Shorts carousel.
+  \item \texttt{performances}: projection mapping performances carousel.
+  \item \texttt{projects}: large projects page and project archive cards.
+\end{itemize}
+
+Add a new item inside the correct \texttt{items} array:
+
+\begin{lstlisting}
+{
+  "platform": "youtube",
+  "videoId": "VIDEO_ID_HERE",
+  "title": "Visible card title",
+  "description": "Short description.",
+  "warning": "Flashing lights"
+}
+\end{lstlisting}
+
+Only include \texttt{"warning": "Flashing lights"} when the video needs a flashing-light warning. Keep the wording exactly \texttt{Flashing lights}.
+
+Finding the YouTube ID:
+
+\begin{itemize}
+  \item \texttt{https://www.youtube.com/watch?v=YVHQzyfnFJA} uses ID \texttt{YVHQzyfnFJA}.
+  \item \texttt{https://www.youtube.com/shorts/xGEssCe58Gw} uses ID \texttt{xGEssCe58Gw}.
+\end{itemize}
+
+\subsection{Add a YouTube Short}
+
+Shorts should include a portrait aspect ratio and usually a thumbnail:
+
+\begin{lstlisting}
+{
+  "platform": "youtube",
+  "platformLabel": "Short",
+  "videoId": "SHORT_ID_HERE",
+  "title": "Short title",
+  "url": "https://www.youtube.com/shorts/SHORT_ID_HERE",
+  "thumbnail": "https://i.ytimg.com/vi/SHORT_ID_HERE/oar2.jpg",
+  "aspectRatio": "9 / 16"
+}
+\end{lstlisting}
+
+YouTube thumbnail paths are public URLs. If \texttt{oar2.jpg} is unavailable for a particular short, use another public thumbnail URL from YouTube such as \texttt{hq720.jpg} or \texttt{hq720\_2.jpg}.
+
+\subsection{Edit a Project Entry}
+
+The large project carousel uses the \texttt{projects} section of \texttt{data/video-carousels.json}. A project item can include:
+
+\begin{lstlisting}
+{
+  "platform": "youtube",
+  "platformLabel": "VR experience",
+  "videoId": "oWADqXUrEfk",
+  "title": "Sensory Overload 3D/VR Experience",
+  "description": "Short summary for cards.",
+  "details": [
+    "Longer paragraph one.",
+    "Longer paragraph two."
+  ],
+  "url": "https://www.youtube.com/watch?v=oWADqXUrEfk",
+  "warning": "Flashing lights"
+}
+\end{lstlisting}
+
+Keep descriptions concise. Put longer explanatory copy in \texttt{details}. If a project uses a website instead of a video, set \texttt{platform} to \texttt{website} and provide a \texttt{url}, \texttt{thumbnail}, and text fields.
+
+\subsection{Validate JSON Before Publishing}
+
+JSON is strict:
+
+\begin{itemize}
+  \item Use double quotes around strings.
+  \item Separate items with commas.
+  \item Do not add a trailing comma after the last item in an array or object.
+  \item Keep braces \texttt{\{} \texttt{\}} and brackets \texttt{[} \texttt{]} balanced.
+\end{itemize}
+
+If editing locally, validate with:
+
+\begin{lstlisting}[language=bash]
+python -m json.tool data/video-carousels.json
+\end{lstlisting}
+
+MDN reference for JSON:
+
+\url{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON}
+
+\subsection{Change the Home Page Hero}
+
+Hero text and buttons live in \texttt{index.html}. The hero background uses \texttt{SiteBackgroundVideo.mp4}. The liquid title effect is controlled by \texttt{scripts/hero-title-liquid.js}. For normal content edits, do not change the WebGL script.
+
+If replacing \texttt{SiteBackgroundVideo.mp4}, keep the file public-safe, compressed, and web-friendly. Test on mobile after replacing it.
+
+\subsection{Change the Contact Form}
+
+The contact form is in \texttt{about-contact.html}. It currently posts to Web3Forms:
+
+\begin{lstlisting}[language=HTML]
+<form action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="...">
+\end{lstlisting}
+
+The current access key is public by design for Web3Forms. Do not add SMTP passwords, private API keys, or webhook secrets to this repository.
+
+If Web3Forms creates a new access key, replace the \texttt{value} in the hidden \texttt{access\_key} input. The Web3Forms form domain should be:
+
+\begin{lstlisting}
+symmetric-vision.xyz
+\end{lstlisting}
+
+Web3Forms references:
+
+\begin{itemize}
+  \item Installation: \url{https://docs.web3forms.com/getting-started/installation}
+  \item API reference: \url{https://docs.web3forms.com/getting-started/api-reference}
+  \item JavaScript/AJAX example: \url{https://docs.web3forms.com/getting-started/examples/ajax-contact-form-using-javascript}
+  \item Spam protection: \url{https://docs.web3forms.com/getting-started/customizations/spam-protection}
+\end{itemize}
+
+\section{Adding Media}
+
+\subsection{What Is Safe to Upload}
+
+Only upload media that is intended to be public. Anything committed to this repo can be downloaded from GitHub and from the live site. This includes images, video files, PDFs, and hidden-looking paths.
+
+Good candidates:
+
+\begin{itemize}
+  \item Public logo files.
+  \item Public thumbnails.
+  \item Public preview images.
+  \item Small compressed videos intended for web display.
+\end{itemize}
+
+Avoid committing:
+
+\begin{itemize}
+  \item Raw client footage.
+  \item Unreleased work.
+  \item Paid/private source project files.
+  \item Large render exports.
+  \item Anything that should not be downloadable.
+\end{itemize}
+
+\subsection{Where to Put Media}
+
+The current site has several root-level media files for legacy simplicity. For new media, prefer a clear folder under \texttt{assets/}, for example:
+
+\begin{lstlisting}
+assets/images/new-thumbnail.jpg
+assets/video/short-loop.mp4
+\end{lstlisting}
+
+Then reference the file with a relative path:
+
+\begin{lstlisting}[language=HTML]
+<img src="assets/images/new-thumbnail.jpg" alt="Description">
+\end{lstlisting}
+
+\subsection{Practical Media Limits}
+
+GitHub has file size and repository size expectations. Even when a large file technically uploads, it can make the site slow and the repo hard to clone. Prefer YouTube/Vimeo for full videos, and use compressed images for thumbnails.
+
+\section{Deployment and Domain}
+
+\subsection{How Publishing Works}
+
+Publishing is automatic:
+
+\begin{enumerate}
+  \item A change is committed to \texttt{main}.
+  \item GitHub Pages rebuilds from the repository root.
+  \item The live site updates at \url{https://symmetric-vision.xyz/}.
+\end{enumerate}
+
+Sometimes GitHub or the browser cache can delay visible changes. If a change is not visible immediately, wait a few minutes and hard-refresh the page.
+
+\subsection{Current DNS Records}
+
+The custom domain currently uses GitHub Pages DNS. In Namecheap, the important website records are:
+
+\begin{lstlisting}
+A      @     185.199.108.153
+A      @     185.199.109.153
+A      @     185.199.110.153
+A      @     185.199.111.153
+CNAME  www   shmedrix.github.io
+\end{lstlisting}
+
+Do not remove email records such as MX, SPF, DKIM, or DMARC unless intentionally changing email hosting. Website DNS and email DNS are separate.
+
+GitHub custom domain docs:
+
+\url{https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site}
+
+GitHub domain verification docs:
+
+\url{https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages}
+
+Namecheap record type docs:
+
+\url{https://www.namecheap.com/support/knowledgebase/article.aspx/579}
+
+Namecheap TXT/SPF/DKIM/DMARC docs:
+
+\url{https://www.namecheap.com/support/knowledgebase/article.aspx/317/2237/how-do-i-add-txtspfdkimdmarc-records-for-my-domain/}
+
+\subsection{Do Not Delete These}
+
+\begin{itemize}
+  \item \texttt{CNAME} in the repo root.
+  \item The GitHub Pages verified-domain TXT record in Namecheap.
+  \item GitHub Pages custom domain setting in repo Settings \(\rightarrow\) Pages.
+  \item Email MX and TXT records unless changing email setup deliberately.
+\end{itemize}
+
+\section{Testing Checklist}
+
+Before publishing, check:
+
+\begin{enumerate}
+  \item Does the page load locally at \texttt{http://127.0.0.1:8010/}?
+  \item Does it still work on mobile width?
+  \item Do all links open correctly?
+  \item If carousel data changed, does the JSON validation command pass?
+  \item Are videos and thumbnails visible?
+  \item Do warnings still say exactly \texttt{Flashing lights}?
+  \item Does the contact form show a success or error message?
+  \item Did you avoid committing private or high-risk media?
+\end{enumerate}
+
+\section{Troubleshooting}
+
+\subsection{The Site Shows an Old Version}
+
+\begin{itemize}
+  \item Wait 5--10 minutes after pushing.
+  \item Hard-refresh the browser.
+  \item Try an incognito/private window.
+  \item Try mobile data to bypass local DNS/router cache.
+  \item Check the repo's Pages setting: Settings \(\rightarrow\) Pages.
+\end{itemize}
+
+\subsection{The Custom Domain Shows GitHub 404}
+
+Check:
+
+\begin{itemize}
+  \item \texttt{CNAME} contains exactly \texttt{symmetric-vision.xyz}.
+  \item Repo Settings \(\rightarrow\) Pages has custom domain \texttt{symmetric-vision.xyz}.
+  \item GitHub says the domain is verified.
+  \item Namecheap A records and \texttt{www} CNAME are still present.
+  \item HTTPS certificate is approved and HTTPS is enforced.
+\end{itemize}
+
+GitHub troubleshooting docs:
+
+\url{https://docs.github.com/en/pages/getting-started-with-github-pages/troubleshooting-404-errors-for-github-pages-sites}
+
+\subsection{A Carousel Disappears}
+
+Usually this means \texttt{data/video-carousels.json} is invalid or the carousel name does not match the page.
+
+\begin{itemize}
+  \item Validate JSON.
+  \item Check that the page has \texttt{data-video-carousel="featured"} or another existing carousel key.
+  \item Check browser console errors if testing locally.
+\end{itemize}
+
+\subsection{A YouTube Thumbnail Is Missing}
+
+Try another public thumbnail path:
+
+\begin{lstlisting}
+https://i.ytimg.com/vi/VIDEO_ID/hqdefault.jpg
+https://i.ytimg.com/vi/VIDEO_ID/hq720.jpg
+https://i.ytimg.com/vi/VIDEO_ID/hq720_2.jpg
+\end{lstlisting}
+
+Shorts thumbnails are less consistent than normal YouTube thumbnails, so manual checking is sometimes needed.
+
+\subsection{The Contact Form Does Not Send}
+
+Check:
+
+\begin{itemize}
+  \item The Web3Forms access key in \texttt{about-contact.html}.
+  \item The Web3Forms dashboard for form status, spam, quota, and verified email.
+  \item Browser console/network errors.
+  \item Whether the Web3Forms free monthly submission limit has been reached.
+  \item Whether the recipient email is working.
+\end{itemize}
+
+\subsection{A Page Looks Broken on Mobile}
+
+Check for long unbroken text, oversized media, or new CSS that forces fixed widths. The site should not scroll sideways on mobile.
+
+CSS reference:
+
+\url{https://developer.mozilla.org/en-US/docs/Web/CSS/Reference}
+
+\section{Recommended Change Process}
+
+For each update:
+
+\begin{enumerate}
+  \item Decide exactly what should change.
+  \item Edit the smallest number of files.
+  \item Preview locally or check the GitHub-rendered file.
+  \item Validate JSON if media data changed.
+  \item Commit with a clear message.
+  \item Wait for GitHub Pages.
+  \item Check the live site on desktop and mobile.
+\end{enumerate}
+
+\section{Quick Reference}
+
+\begin{longtable}{>{\bfseries}p{0.28\linewidth}p{0.62\linewidth}}
+Live site & \url{https://symmetric-vision.xyz/}\\
+Repo & \url{https://github.com/Shmedrix/symmetricvisionhome}\\
+Edit page text & Edit \texttt{index.html}, \texttt{about-contact.html}, \texttt{projects.html}, or \texttt{links.html}.\\
+Edit visual style & Edit \texttt{styles.css}.\\
+Edit carousels & Edit \texttt{data/video-carousels.json}.\\
+Edit contact form & Edit \texttt{about-contact.html} and possibly \texttt{scripts/contact-form.js}.\\
+Local preview & \texttt{python -m http.server 8010 --bind 127.0.0.1}\\
+JSON validation & \texttt{python -m json.tool data/video-carousels.json}\\
+Custom domain file & \texttt{CNAME}\\
+Web3Forms domain & \texttt{symmetric-vision.xyz}\\
+\end{longtable}
+
+\end{document}
