@@ -96,7 +96,9 @@
     ]
   },
   "shorts": {
-    "label": "YouTube Shorts from Symmetric Vision",
+    "label": "Latest Shorts from Symmetric Vision on YouTube",
+    "managedBy": "scripts/update_youtube_feed.py",
+    "channelId": "UCFfJzhPdy9E898xntaxKZRw",
     "items": [
       {
         "platform": "youtube",
@@ -165,7 +167,7 @@
         "platform": "youtube",
         "platformLabel": "Short",
         "videoId": "ktR0_EL38ck",
-        "title": "This fallen tree is doing funny stuff to my eyes",
+        "title": "This falllen tree is doing funny stuff to my eyes",
         "url": "https://www.youtube.com/shorts/ktR0_EL38ck",
         "thumbnail": "https://i.ytimg.com/vi/ktR0_EL38ck/oar2.jpg",
         "aspectRatio": "9 / 16"
@@ -174,7 +176,7 @@
         "platform": "youtube",
         "platformLabel": "Short",
         "videoId": "M0Ep_kLHpeI",
-        "title": "Seeing sound on various states of consciousness",
+        "title": "Seeing sound on various states of consciousness (synesthesia experiment)",
         "url": "https://www.youtube.com/shorts/M0Ep_kLHpeI",
         "thumbnail": "https://i.ytimg.com/vi/M0Ep_kLHpeI/oar2.jpg",
         "aspectRatio": "9 / 16"
@@ -183,7 +185,7 @@
         "platform": "youtube",
         "platformLabel": "Short",
         "videoId": "-Tv-kilkYY0",
-        "title": "This rocky path is going all funky on me",
+        "title": "This rocky path is going all funky on me (Audio/Visual replication experiment)",
         "url": "https://www.youtube.com/shorts/-Tv-kilkYY0",
         "thumbnail": "https://i.ytimg.com/vi/-Tv-kilkYY0/oar2.jpg",
         "aspectRatio": "9 / 16"
@@ -201,30 +203,10 @@
         "platform": "youtube",
         "platformLabel": "Short",
         "videoId": "c6MNKjj61jI",
-        "title": "See you at Shankra, my friends #psychedelic",
+        "title": "See you at Shankra, my friends ✌️👽✌️ #psychedelic",
         "url": "https://www.youtube.com/shorts/c6MNKjj61jI",
         "thumbnail": "https://i.ytimg.com/vi/c6MNKjj61jI/oar2.jpg",
         "aspectRatio": "9 / 16"
-      },
-      {
-        "platform": "youtube",
-        "platformLabel": "Short",
-        "videoId": "_VDuoWW7gHA",
-        "title": "3D 360 degree Hex Tunnel experiment (reupload)",
-        "url": "https://www.youtube.com/shorts/_VDuoWW7gHA",
-        "thumbnail": "https://i.ytimg.com/vi/_VDuoWW7gHA/hq720_2.jpg",
-        "aspectRatio": "9 / 16",
-        "warning": "Flashing lights"
-      },
-      {
-        "platform": "youtube",
-        "platformLabel": "Short",
-        "videoId": "yoHJFmhiLyo",
-        "title": "3D 360 degree Hex Tunnel experiment",
-        "url": "https://www.youtube.com/shorts/yoHJFmhiLyo",
-        "thumbnail": "https://i.ytimg.com/vi/yoHJFmhiLyo/hq720_2.jpg",
-        "aspectRatio": "9 / 16",
-        "warning": "Flashing lights"
       }
     ]
   },
@@ -420,6 +402,109 @@
         "details": [
           "VFX work for the psychedelic trip sequence in Mr. Weekend."
         ]
+      }
+    ]
+  },
+  "latest": {
+    "label": "Latest uploads from Symmetric Vision on YouTube",
+    "managedBy": "scripts/update_youtube_feed.py",
+    "channelId": "UCFfJzhPdy9E898xntaxKZRw",
+    "items": [
+      {
+        "platform": "youtube",
+        "videoId": "4us72A4bJ2I",
+        "title": "That moment when forest start to turn into DMT hyperspace",
+        "url": "https://www.youtube.com/watch?v=4us72A4bJ2I",
+        "thumbnail": "https://i.ytimg.com/vi/4us72A4bJ2I/hqdefault.jpg",
+        "publishedAt": "2026-09-12T10:25:21Z"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "YHV6apChFwk",
+        "title": "SV Psychedelic 3D texture studio tool is out!",
+        "url": "https://www.youtube.com/watch?v=YHV6apChFwk",
+        "thumbnail": "https://i.ytimg.com/vi/YHV6apChFwk/hqdefault.jpg",
+        "publishedAt": "2026-09-10T15:21:06Z"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "rMMeWuVCxRo",
+        "title": "Dont forget to sprinkle some DMT on those veggies for maximum nutritional value",
+        "url": "https://www.youtube.com/watch?v=rMMeWuVCxRo",
+        "thumbnail": "https://i.ytimg.com/vi/rMMeWuVCxRo/hqdefault.jpg",
+        "publishedAt": "2026-09-07T16:37:23Z"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "rLf5yatB_vo",
+        "title": "This is how i died....",
+        "url": "https://www.youtube.com/watch?v=rLf5yatB_vo",
+        "thumbnail": "https://i.ytimg.com/vi/rLf5yatB_vo/hqdefault.jpg",
+        "publishedAt": "2026-09-06T17:10:45Z"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "gkSozTSpwws",
+        "title": "Summoning Hyperspace Entities at MoDem Festival 2026",
+        "url": "https://www.youtube.com/watch?v=gkSozTSpwws",
+        "thumbnail": "https://i.ytimg.com/vi/gkSozTSpwws/hqdefault.jpg",
+        "publishedAt": "2026-08-21T10:00:19Z"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "9xn1rrc_AFk",
+        "title": "Staring at a bunch of cacti, on a bunch of cacti",
+        "url": "https://www.youtube.com/watch?v=9xn1rrc_AFk",
+        "thumbnail": "https://i.ytimg.com/vi/9xn1rrc_AFk/hqdefault.jpg",
+        "publishedAt": "2026-08-19T13:02:01Z"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "T2IMl9Rz190",
+        "title": "Losing my marbles at MoDem Festival",
+        "url": "https://www.youtube.com/watch?v=T2IMl9Rz190",
+        "thumbnail": "https://i.ytimg.com/vi/T2IMl9Rz190/hqdefault.jpg",
+        "publishedAt": "2026-08-17T19:43:08Z"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "mlh97W9_tX0",
+        "title": "Got stuck in the MoDem Festival toilet for longer than expected, on psychedelics",
+        "url": "https://www.youtube.com/watch?v=mlh97W9_tX0",
+        "thumbnail": "https://i.ytimg.com/vi/mlh97W9_tX0/hqdefault.jpg",
+        "publishedAt": "2026-08-14T11:37:24Z"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "9EzsPMvHKfA",
+        "title": "Got stuck staring at this garbage container on a pretty intense 2seebee comeup",
+        "url": "https://www.youtube.com/watch?v=9EzsPMvHKfA",
+        "thumbnail": "https://i.ytimg.com/vi/9EzsPMvHKfA/hqdefault.jpg",
+        "publishedAt": "2026-07-24T16:23:05Z"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "lQvKUZnZn1g",
+        "title": "Contemplating fish being able to climb the stairs on psychedelics",
+        "url": "https://www.youtube.com/watch?v=lQvKUZnZn1g",
+        "thumbnail": "https://i.ytimg.com/vi/lQvKUZnZn1g/hqdefault.jpg",
+        "publishedAt": "2026-06-18T15:26:11Z"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "ZlwIN9eTqBM",
+        "title": "This kitty is bringing not only luck but psychedelic visions too",
+        "url": "https://www.youtube.com/watch?v=ZlwIN9eTqBM",
+        "thumbnail": "https://i.ytimg.com/vi/ZlwIN9eTqBM/hqdefault.jpg",
+        "publishedAt": "2026-06-05T19:10:54Z"
+      },
+      {
+        "platform": "youtube",
+        "videoId": "lIiFspYoq8c",
+        "title": "When youre tripping so hard, that a regular wall ornament starts showing signs of sentience",
+        "url": "https://www.youtube.com/watch?v=lIiFspYoq8c",
+        "thumbnail": "https://i.ytimg.com/vi/lIiFspYoq8c/hqdefault.jpg",
+        "publishedAt": "2026-05-28T10:40:35Z"
       }
     ]
   }

@@ -1,0 +1,61 @@
+name: Update YouTube videos and Shorts
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Avoid the busiest start-of-hour window. Scheduled workflows use UTC.
+    - cron: "23 */6 * * *"
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: update-youtube-feed
+  cancel-in-progress: true
+
+jobs:
+  update-feed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the website
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh videos and Shorts
+        run: python scripts/update_youtube_feed.py
+
+      - name: Run updater tests
+        run: python -m unittest discover -s tests -p "test_*.py"
+
+      - name: Commit a changed feed
+        id: commit-feed
+        shell: bash
+        run: |
+          if git diff --quiet -- data/video-carousels.json; then
+            echo "The YouTube feed is already current."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/video-carousels.json
+          git commit -m "Update YouTube videos and Shorts"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Request a GitHub Pages build
+        if: steps.commit-feed.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh api --method POST
+          -H "Accept: application/vnd.github+json"
+          -H "X-GitHub-Api-Version: 2022-11-28"
+          "repos/${GITHUB_REPOSITORY}/pages/builds"

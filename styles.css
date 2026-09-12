@@ -280,6 +280,12 @@ a:hover {
   color: var(--text-soft);
 }
 
+.youtube-section-note a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
 .section-action {
   margin-top: 18px;
 }

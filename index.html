@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#000000">
-    <link rel="stylesheet" href="styles.css?v=20260602-hero-footer-warnings">
+    <link rel="stylesheet" href="styles.css?v=20260912-youtube-sections">
     <script src="scripts/hero-title-liquid.js?v=20260602-pointer-liquid" defer></script>
     <script src="scripts/hero-video.js?v=20260602-hero-loop" defer></script>
     <script src="scripts/video-carousel.js?v=20260602-projects-page-2" defer></script>
@@ -44,25 +44,30 @@
           <h1 class="hero-title" data-liquid-title="SYMMETRIC VISION"><span class="hero-title__text">SYMMETRIC VISION</span><canvas class="hero-title__canvas" aria-hidden="true"></canvas></h1>
           <p>Inducing Flashbacks since 2014</p>
           <div class="hero__actions" aria-label="Primary links">
-            <a class="button-link" href="#featured-videos">Watch videos</a>
+            <a class="button-link" href="#latest-videos">Watch videos</a>
             <a class="button-link button-link--quiet" href="about-contact.html">Get in touch</a>
           </div>
         </div>
       </section>
 
-      <section class="section-shell" id="featured-videos">
+      <section class="section-shell" id="latest-videos">
         <div class="section-heading">
-          <p class="eyebrow">Video archive</p>
-          <h2>Featured videos</h2>
+          <h2>Latest from my YouTube</h2>
         </div>
-        <div data-video-carousel="featured"></div>
+        <p class="section-lede youtube-section-note">
+          <a href="https://www.youtube.com/c/SymmetricVision" target="_blank" rel="noopener noreferrer">Visit my YouTube channel</a>
+          <span aria-hidden="true">·</span>
+          Some videos may contain flashing lights.
+        </p>
+        <div data-video-carousel="latest"></div>
       </section>
 
-      <section class="section-shell">
-        <div class="section-heading">
-          <p class="eyebrow">Short-form archive</p>
-          <h2>YouTube Shorts</h2>
-        </div>
+      <section class="section-shell" id="youtube-shorts">
+        <p class="section-lede youtube-section-note">
+          <a href="https://www.youtube.com/c/SymmetricVision/shorts" target="_blank" rel="noopener noreferrer">Visit my YouTube Shorts</a>
+          <span aria-hidden="true">·</span>
+          Some videos may contain flashing lights.
+        </p>
         <div data-video-carousel="shorts"></div>
       </section>
 

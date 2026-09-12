@@ -2,6 +2,9 @@ tmp/
 docs/reference/
 .DS_Store
 Thumbs.db
+.playwright-cli/
+__pycache__/
+*.py[cod]
 *.aux
 *.fdb_latexmk
 *.fls
