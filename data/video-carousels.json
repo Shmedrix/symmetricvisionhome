@@ -412,6 +412,14 @@
     "items": [
       {
         "platform": "youtube",
+        "videoId": "GnCiV-9VyXM",
+        "title": "Just another random flashback",
+        "url": "https://www.youtube.com/watch?v=GnCiV-9VyXM",
+        "thumbnail": "https://i.ytimg.com/vi/GnCiV-9VyXM/hqdefault.jpg",
+        "publishedAt": "2026-09-28T15:42:34Z"
+      },
+      {
+        "platform": "youtube",
         "videoId": "4us72A4bJ2I",
         "title": "That moment when forest start to turn into DMT hyperspace",
         "url": "https://www.youtube.com/watch?v=4us72A4bJ2I",
@@ -497,14 +505,6 @@
         "url": "https://www.youtube.com/watch?v=ZlwIN9eTqBM",
         "thumbnail": "https://i.ytimg.com/vi/ZlwIN9eTqBM/hqdefault.jpg",
         "publishedAt": "2026-06-05T19:10:54Z"
-      },
-      {
-        "platform": "youtube",
-        "videoId": "lIiFspYoq8c",
-        "title": "When youre tripping so hard, that a regular wall ornament starts showing signs of sentience",
-        "url": "https://www.youtube.com/watch?v=lIiFspYoq8c",
-        "thumbnail": "https://i.ytimg.com/vi/lIiFspYoq8c/hqdefault.jpg",
-        "publishedAt": "2026-05-28T10:40:35Z"
       }
     ]
   }
