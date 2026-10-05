@@ -412,6 +412,14 @@
     "items": [
       {
         "platform": "youtube",
+        "videoId": "yR_GJGrjoAE",
+        "title": "Having another meaningful conversation with my hyperspace neighbours",
+        "url": "https://www.youtube.com/watch?v=yR_GJGrjoAE",
+        "thumbnail": "https://i.ytimg.com/vi/yR_GJGrjoAE/hqdefault.jpg",
+        "publishedAt": "2026-10-04T22:10:27Z"
+      },
+      {
+        "platform": "youtube",
         "videoId": "GnCiV-9VyXM",
         "title": "Just another random flashback",
         "url": "https://www.youtube.com/watch?v=GnCiV-9VyXM",
@@ -497,14 +505,6 @@
         "url": "https://www.youtube.com/watch?v=lQvKUZnZn1g",
         "thumbnail": "https://i.ytimg.com/vi/lQvKUZnZn1g/hqdefault.jpg",
         "publishedAt": "2026-06-18T15:26:11Z"
-      },
-      {
-        "platform": "youtube",
-        "videoId": "ZlwIN9eTqBM",
-        "title": "This kitty is bringing not only luck but psychedelic visions too",
-        "url": "https://www.youtube.com/watch?v=ZlwIN9eTqBM",
-        "thumbnail": "https://i.ytimg.com/vi/ZlwIN9eTqBM/hqdefault.jpg",
-        "publishedAt": "2026-06-05T19:10:54Z"
       }
     ]
   }
