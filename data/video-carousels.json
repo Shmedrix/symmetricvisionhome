@@ -412,6 +412,14 @@
     "items": [
       {
         "platform": "youtube",
+        "videoId": "9IwzARpdM9Q",
+        "title": "Amanita Muscaria visuals (a bit exaggerated)",
+        "url": "https://www.youtube.com/watch?v=9IwzARpdM9Q",
+        "thumbnail": "https://i.ytimg.com/vi/9IwzARpdM9Q/hqdefault.jpg",
+        "publishedAt": "2026-10-11T12:05:37Z"
+      },
+      {
+        "platform": "youtube",
         "videoId": "yR_GJGrjoAE",
         "title": "Having another meaningful conversation with my hyperspace neighbours",
         "url": "https://www.youtube.com/watch?v=yR_GJGrjoAE",
@@ -497,14 +505,6 @@
         "url": "https://www.youtube.com/watch?v=9EzsPMvHKfA",
         "thumbnail": "https://i.ytimg.com/vi/9EzsPMvHKfA/hqdefault.jpg",
         "publishedAt": "2026-07-24T16:23:05Z"
-      },
-      {
-        "platform": "youtube",
-        "videoId": "lQvKUZnZn1g",
-        "title": "Contemplating fish being able to climb the stairs on psychedelics",
-        "url": "https://www.youtube.com/watch?v=lQvKUZnZn1g",
-        "thumbnail": "https://i.ytimg.com/vi/lQvKUZnZn1g/hqdefault.jpg",
-        "publishedAt": "2026-06-18T15:26:11Z"
       }
     ]
   }
