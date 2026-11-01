@@ -412,6 +412,14 @@
     "items": [
       {
         "platform": "youtube",
+        "videoId": "7ngywBygqJA",
+        "title": "Half-way done memory from one of the DiMiTris rooms",
+        "url": "https://www.youtube.com/watch?v=7ngywBygqJA",
+        "thumbnail": "https://i.ytimg.com/vi/7ngywBygqJA/hqdefault.jpg",
+        "publishedAt": "2026-11-01T18:03:56Z"
+      },
+      {
+        "platform": "youtube",
         "videoId": "9IwzARpdM9Q",
         "title": "Amanita Muscaria visuals (a bit exaggerated)",
         "url": "https://www.youtube.com/watch?v=9IwzARpdM9Q",
@@ -497,14 +505,6 @@
         "url": "https://www.youtube.com/watch?v=mlh97W9_tX0",
         "thumbnail": "https://i.ytimg.com/vi/mlh97W9_tX0/hqdefault.jpg",
         "publishedAt": "2026-08-14T11:37:24Z"
-      },
-      {
-        "platform": "youtube",
-        "videoId": "9EzsPMvHKfA",
-        "title": "Got stuck staring at this garbage container on a pretty intense 2seebee comeup",
-        "url": "https://www.youtube.com/watch?v=9EzsPMvHKfA",
-        "thumbnail": "https://i.ytimg.com/vi/9EzsPMvHKfA/hqdefault.jpg",
-        "publishedAt": "2026-07-24T16:23:05Z"
       }
     ]
   }
