@@ -1,8 +1,11 @@
+from io import BytesIO, StringIO
 import json
 from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
+from urllib.error import HTTPError
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
@@ -66,6 +69,59 @@ SAMPLE_SHORTS_PAGE = (
 
 
 class YouTubeFeedTests(unittest.TestCase):
+    def test_default_feed_uses_uploads_playlist_when_channel_feed_returns_404(self):
+        playlist_url = (
+            "https://www.youtube.com/feeds/videos.xml?playlist_id=UUFfJzhPdy9E898xntaxKZRw"
+        )
+
+        def open_feed(request, **kwargs):
+            if request.full_url == playlist_url:
+                return BytesIO(SAMPLE_FEED)
+            raise HTTPError(request.full_url, 404, "Not Found", None, None)
+
+        with patch.object(updater, "urlopen", side_effect=open_feed), patch(
+            "time.sleep"
+        ), patch("sys.stderr", new_callable=StringIO):
+            try:
+                items = updater.parse_feed(updater.fetch_feed())
+            except OSError as error:
+                self.fail(f"The uploads playlist was available but the fetch failed: {error}")
+
+        self.assertEqual(items[0]["videoId"], "12345678901")
+
+    def test_shorts_fetch_retries_after_a_server_error(self):
+        error = HTTPError(updater.SHORTS_URL, 500, "Server Error", None, None)
+
+        with patch.object(
+            updater, "urlopen", side_effect=[error, BytesIO(SAMPLE_SHORTS_PAGE)]
+        ), patch("time.sleep"), patch("sys.stderr", new_callable=StringIO):
+            try:
+                items = updater.parse_shorts_page(updater.fetch_shorts_page())
+            except OSError as error:
+                self.fail(f"The Shorts page recovered but the fetch failed: {error}")
+
+        self.assertEqual(items[0]["title"], "Newest Short")
+
+    def test_update_preserves_catalog_when_shorts_retries_are_exhausted(self):
+        def open_source(request, **kwargs):
+            if request.full_url == updater.FEED_URL:
+                return BytesIO(SAMPLE_FEED)
+            raise HTTPError(request.full_url, 500, "Server Error", None, None)
+
+        with tempfile.TemporaryDirectory() as temp_directory:
+            catalog = Path(temp_directory) / "video-carousels.json"
+            original = b'{"shorts": {"items": []}}\n'
+            catalog.write_bytes(original)
+
+            with patch.object(updater, "urlopen", side_effect=open_source), patch(
+                "sys.argv", ["update_youtube_feed.py", "--catalog", str(catalog)]
+            ), patch("time.sleep"), patch("sys.stderr", new_callable=StringIO) as stderr:
+                self.assertEqual(updater.main(), 1)
+
+            self.assertEqual(catalog.read_bytes(), original)
+            self.assertEqual(stderr.getvalue().count("Retrying in"), 2)
+            self.assertIn("YouTube Shorts page request failed", stderr.getvalue())
+
     def test_parse_feed_sorts_and_normalizes_entries(self):
         items = updater.parse_feed(SAMPLE_FEED, limit=2)
 

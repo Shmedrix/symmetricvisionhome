@@ -9,6 +9,8 @@ import json
 from pathlib import Path
 import re
 import sys
+import time
+from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 import xml.etree.ElementTree as ET
 
@@ -16,6 +18,7 @@ import xml.etree.ElementTree as ET
 CHANNEL_ID = "UCFfJzhPdy9E898xntaxKZRw"
 CHANNEL_URL = "https://www.youtube.com/c/SymmetricVision"
 FEED_URL = f"https://www.youtube.com/feeds/videos.xml?channel_id={CHANNEL_ID}"
+UPLOADS_FEED_URL = f"https://www.youtube.com/feeds/videos.xml?playlist_id=UU{CHANNEL_ID[2:]}"
 SHORTS_URL = f"{CHANNEL_URL}/shorts"
 DEFAULT_LIMIT = 12
 MAX_FEED_BYTES = 2_000_000
@@ -28,24 +31,58 @@ YOUTUBE = "http://www.youtube.com/xml/schemas/2015"
 VIDEO_ID_PATTERN = re.compile(r"^[A-Za-z0-9_-]{11}$")
 
 
+def fetch_youtube(
+    url: str,
+    headers: dict[str, str],
+    max_bytes: int,
+    source: str,
+    fallback_url: str | None = None,
+) -> bytes:
+    attempts = ((url, 2), (fallback_url or url, 5), (url, None))
+    for request_url, retry_delay in attempts:
+        request = Request(request_url, headers=headers)
+        request_source = (
+            "YouTube uploads playlist feed" if request_url == fallback_url else source
+        )
+        try:
+            with urlopen(request, timeout=30) as response:
+                payload = response.read(max_bytes + 1)
+        except (URLError, TimeoutError) as error:
+            retryable = True
+            if isinstance(error, HTTPError):
+                error.close()
+                # YouTube can return 404 for feeds that are still available.
+                retryable = error.code in (404, 429) or 500 <= error.code < 600
+            if retry_delay is None or not retryable:
+                raise OSError(f"{request_source} request failed: {error}") from error
+            print(
+                f"{request_source} request failed: {error}. Retrying in {retry_delay}s.",
+                file=sys.stderr,
+            )
+            time.sleep(retry_delay)
+        else:
+            break
+
+    if len(payload) > max_bytes:
+        raise ValueError(f"{request_source} exceeded the expected size limit")
+    return payload
+
+
 def fetch_feed(feed_url: str = FEED_URL) -> bytes:
-    request = Request(
+    return fetch_youtube(
         feed_url,
         headers={
             "Accept": "application/atom+xml, application/xml;q=0.9, */*;q=0.1",
             "User-Agent": "symmetricvisionhome-feed-updater/1.0",
         },
+        max_bytes=MAX_FEED_BYTES,
+        source="YouTube channel feed",
+        fallback_url=UPLOADS_FEED_URL if feed_url == FEED_URL else None,
     )
-    with urlopen(request, timeout=30) as response:
-        payload = response.read(MAX_FEED_BYTES + 1)
-
-    if len(payload) > MAX_FEED_BYTES:
-        raise ValueError("YouTube feed exceeded the expected size limit")
-    return payload
 
 
 def fetch_shorts_page(shorts_url: str = SHORTS_URL) -> bytes:
-    request = Request(
+    return fetch_youtube(
         shorts_url,
         headers={
             "Accept": "text/html,application/xhtml+xml;q=0.9,*/*;q=0.1",
@@ -53,13 +90,9 @@ def fetch_shorts_page(shorts_url: str = SHORTS_URL) -> bytes:
             "Cookie": "SOCS=CAI",
             "User-Agent": "Mozilla/5.0 symmetricvisionhome-feed-updater/1.0",
         },
+        max_bytes=MAX_PAGE_BYTES,
+        source="YouTube Shorts page",
     )
-    with urlopen(request, timeout=30) as response:
-        payload = response.read(MAX_PAGE_BYTES + 1)
-
-    if len(payload) > MAX_PAGE_BYTES:
-        raise ValueError("YouTube Shorts page exceeded the expected size limit")
-    return payload
 
 
 def parse_feed(feed_xml: bytes, limit: int = DEFAULT_LIMIT) -> list[dict[str, object]]:
