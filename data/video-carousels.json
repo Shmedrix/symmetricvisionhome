@@ -412,6 +412,14 @@
     "items": [
       {
         "platform": "youtube",
+        "videoId": "fbJNVuJZ8Wk",
+        "title": "Having a little chat with Kitsune",
+        "url": "https://www.youtube.com/watch?v=fbJNVuJZ8Wk",
+        "thumbnail": "https://i.ytimg.com/vi/fbJNVuJZ8Wk/hqdefault.jpg",
+        "publishedAt": "2026-11-07T23:16:26Z"
+      },
+      {
+        "platform": "youtube",
         "videoId": "SiBRvSS5qSY",
         "title": "Helpful inhabitant of the changa dimension",
         "url": "https://www.youtube.com/watch?v=SiBRvSS5qSY",
@@ -497,14 +505,6 @@
         "url": "https://www.youtube.com/watch?v=9xn1rrc_AFk",
         "thumbnail": "https://i.ytimg.com/vi/9xn1rrc_AFk/hqdefault.jpg",
         "publishedAt": "2026-08-19T13:02:01Z"
-      },
-      {
-        "platform": "youtube",
-        "videoId": "T2IMl9Rz190",
-        "title": "Losing my marbles at MoDem Festival",
-        "url": "https://www.youtube.com/watch?v=T2IMl9Rz190",
-        "thumbnail": "https://i.ytimg.com/vi/T2IMl9Rz190/hqdefault.jpg",
-        "publishedAt": "2026-08-17T19:43:08Z"
       }
     ]
   }
