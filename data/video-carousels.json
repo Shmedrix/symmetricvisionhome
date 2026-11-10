@@ -103,6 +103,15 @@
       {
         "platform": "youtube",
         "platformLabel": "Short",
+        "videoId": "1OLYOF8GCK4",
+        "title": "Another quick memory from me VJ set at MoDem Festival 2026",
+        "url": "https://www.youtube.com/shorts/1OLYOF8GCK4",
+        "thumbnail": "https://i.ytimg.com/vi/1OLYOF8GCK4/oar2.jpg",
+        "aspectRatio": "9 / 16"
+      },
+      {
+        "platform": "youtube",
+        "platformLabel": "Short",
         "videoId": "xGEssCe58Gw",
         "title": "Found me a new friend, on psychedelics",
         "url": "https://www.youtube.com/shorts/xGEssCe58Gw",
@@ -197,15 +206,6 @@
         "title": "This stone wall is going all triangle on me, on psychedelics",
         "url": "https://www.youtube.com/shorts/5SyIeKQZO6I",
         "thumbnail": "https://i.ytimg.com/vi/5SyIeKQZO6I/oar2.jpg",
-        "aspectRatio": "9 / 16"
-      },
-      {
-        "platform": "youtube",
-        "platformLabel": "Short",
-        "videoId": "c6MNKjj61jI",
-        "title": "See you at Shankra, my friends ✌️👽✌️ #psychedelic",
-        "url": "https://www.youtube.com/shorts/c6MNKjj61jI",
-        "thumbnail": "https://i.ytimg.com/vi/c6MNKjj61jI/oar2.jpg",
         "aspectRatio": "9 / 16"
       }
     ]
@@ -412,6 +412,14 @@
     "items": [
       {
         "platform": "youtube",
+        "videoId": "1OLYOF8GCK4",
+        "title": "Another quick memory from me VJ set at MoDem Festival 2026",
+        "url": "https://www.youtube.com/watch?v=1OLYOF8GCK4",
+        "thumbnail": "https://i.ytimg.com/vi/1OLYOF8GCK4/hqdefault.jpg",
+        "publishedAt": "2026-11-10T07:44:03Z"
+      },
+      {
+        "platform": "youtube",
         "videoId": "fbJNVuJZ8Wk",
         "title": "Having a little chat with Kitsune",
         "url": "https://www.youtube.com/watch?v=fbJNVuJZ8Wk",
@@ -497,14 +505,6 @@
         "url": "https://www.youtube.com/watch?v=gkSozTSpwws",
         "thumbnail": "https://i.ytimg.com/vi/gkSozTSpwws/hqdefault.jpg",
         "publishedAt": "2026-08-21T10:00:19Z"
-      },
-      {
-        "platform": "youtube",
-        "videoId": "9xn1rrc_AFk",
-        "title": "Staring at a bunch of cacti, on a bunch of cacti",
-        "url": "https://www.youtube.com/watch?v=9xn1rrc_AFk",
-        "thumbnail": "https://i.ytimg.com/vi/9xn1rrc_AFk/hqdefault.jpg",
-        "publishedAt": "2026-08-19T13:02:01Z"
       }
     ]
   }
