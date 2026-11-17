@@ -412,6 +412,14 @@
     "items": [
       {
         "platform": "youtube",
+        "videoId": "wUYrgKRqZQ4",
+        "title": "This statue is just staring directly into my soul",
+        "url": "https://www.youtube.com/watch?v=wUYrgKRqZQ4",
+        "thumbnail": "https://i.ytimg.com/vi/wUYrgKRqZQ4/hqdefault.jpg",
+        "publishedAt": "2026-11-17T11:55:56Z"
+      },
+      {
+        "platform": "youtube",
         "videoId": "1OLYOF8GCK4",
         "title": "Another quick memory from me VJ set at MoDem Festival 2026",
         "url": "https://www.youtube.com/watch?v=1OLYOF8GCK4",
@@ -497,14 +505,6 @@
         "url": "https://www.youtube.com/watch?v=rLf5yatB_vo",
         "thumbnail": "https://i.ytimg.com/vi/rLf5yatB_vo/hqdefault.jpg",
         "publishedAt": "2026-09-06T17:10:45Z"
-      },
-      {
-        "platform": "youtube",
-        "videoId": "gkSozTSpwws",
-        "title": "Summoning Hyperspace Entities at MoDem Festival 2026",
-        "url": "https://www.youtube.com/watch?v=gkSozTSpwws",
-        "thumbnail": "https://i.ytimg.com/vi/gkSozTSpwws/hqdefault.jpg",
-        "publishedAt": "2026-08-21T10:00:19Z"
       }
     ]
   }
