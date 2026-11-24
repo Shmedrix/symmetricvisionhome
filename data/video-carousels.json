@@ -412,6 +412,14 @@
     "items": [
       {
         "platform": "youtube",
+        "videoId": "n4A6qBbiYFU",
+        "title": "This forest is making my mind do weird wavy stuff",
+        "url": "https://www.youtube.com/watch?v=n4A6qBbiYFU",
+        "thumbnail": "https://i.ytimg.com/vi/n4A6qBbiYFU/hqdefault.jpg",
+        "publishedAt": "2026-11-24T16:22:57Z"
+      },
+      {
+        "platform": "youtube",
         "videoId": "4Y6rm71Scck",
         "title": "Another quick flashback from last MoDem Festival.",
         "url": "https://www.youtube.com/watch?v=4Y6rm71Scck",
@@ -497,14 +505,6 @@
         "url": "https://www.youtube.com/watch?v=YHV6apChFwk",
         "thumbnail": "https://i.ytimg.com/vi/YHV6apChFwk/hqdefault.jpg",
         "publishedAt": "2026-09-10T15:21:06Z"
-      },
-      {
-        "platform": "youtube",
-        "videoId": "rMMeWuVCxRo",
-        "title": "Dont forget to sprinkle some DMT on those veggies for maximum nutritional value",
-        "url": "https://www.youtube.com/watch?v=rMMeWuVCxRo",
-        "thumbnail": "https://i.ytimg.com/vi/rMMeWuVCxRo/hqdefault.jpg",
-        "publishedAt": "2026-09-07T16:37:23Z"
       }
     ]
   }
